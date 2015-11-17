@@ -1,0 +1,152 @@
+#content {
+    margin-left: 250px;
+    padding: 50px;
+}
+
+.wrapper {
+    max-width: 900px;
+}
+
+.code-preview {
+    border: 1px solid @blue-steel-2;
+    margin-bottom: 60px;
+    > header {
+        background: @blue-steel;
+        height: 60px;
+        color: white;
+        padding: 0 20px;
+        overflow: hidden;
+    }
+    h2 {
+        line-height: 60px;
+        display: inline-block;
+    }
+    .control {
+        display: inline-block;
+        float: right;
+        width: 40px;
+        text-align: center;
+        margin: 8px 0 0 24px;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        span {
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: block;
+            margin-top: 5px;
+        }
+        &:after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid @blue-steel-2;
+            display: block;
+            position: absolute;
+            bottom: -24px;
+            left: 8px;
+            transition: all .25s ease-in-out;
+            &.active {
+                bottom: -14px;
+            }
+        }
+        &.active:after {
+            bottom: -14px;
+        }
+    }
+    .drawer-wrapper {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+        background: #f0f0f0;
+        &.ng-hide {
+            height: 0;
+        }
+        &.ng-animate {
+            transition: height .3s ease-in-out;
+        }
+    }
+    .drawer {
+        position: relative;
+        > header {
+            background: @blue-steel-2;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 20px;
+            color: white;
+            span {
+                margin-right: 24px;
+                display: inline-block;
+                height: 40px;
+                cursor: pointer;
+                user-select: none;
+                transition: all .3s;
+                &.active {
+                    border-bottom: 4px solid @blue;
+                }
+            }
+        }
+        .scroll-area {
+            overflow: scroll;
+            height: 160px;
+            opacity: 1;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            left: 0;
+            &.ng-hide {
+                opacity: 0;
+            }
+            &.ng-animate {
+                transition: opacity .5s;
+            }
+            .hljs {
+                min-height: 160px;
+            }
+        }
+    }
+    .component-preview {
+        // min-height: 160px;
+        padding: 60px 0;
+        text-align: center;
+        .component-preview-wrapper {
+            display: inline-block;
+        }
+    }
+}
+.codepen-iframe{
+        margin-bottom: 60px;
+}
+.inputs-content{
+    padding:10px;
+}
+.lucid-table {
+    line-height: 25px;
+    //background:#fff;
+    width:100%;
+    thead {
+        //background: #d4eef9;
+        > tr > th {
+            font-weight: bold;
+            vertical-align: bottom;
+            border-bottom: solid 1px @blue-steel;
+        }
+    }
+    th, td{
+        line-height: 28px;
+        padding:0 10px;
+        text-align:left;
+        //border: 1px solid #ebebeb;
+    }
+    .lucid-code-name{
+        background: rgba(0,0,0,.1);
+        padding:0 3px;
+    }
+}
+.snippet-starter{
+    text-decoration:underline;
+    color:#2FB3E5;
+}

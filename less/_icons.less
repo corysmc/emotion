@@ -1,0 +1,90 @@
+.icon-list-container {
+	margin: 30px 0;
+	background: #f0f0f0;
+	padding: 20px;
+	border-radius: 8px;
+}
+.particle-icon-wrapper {
+	text-align: center;
+	float: left;
+	width: 100px;
+	min-height: 60;
+	vertical-align: top;
+	margin: 10px;
+	.icon-container {
+		width: 22px;
+		height: 22px;
+		display: inline-block;
+		cursor: pointer;
+	}
+	h5 {
+		font-size: 12px;
+		margin: 5px 0;
+		height: 48px;
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+		width: 100px;
+		line-height:1.2;
+		color: @blue-steel-2;
+	}
+	a {
+		font-size: 14px;
+		color: @blue
+	}
+	transform:scale(1);
+	opacity:1;
+	&.ng-leave-active, &.ng-enter{
+		transform: scale(.01);
+		margin-left:-50px;
+		margin-right:-50px;
+		opacity:0;
+	}
+	&.ng-enter-active{
+		transform: scale(1);
+		margin:10px;
+		opacity:1;
+	}
+	
+	&.ng-animate{
+		transition: .35s ease-in-out all;
+	}
+}
+
+.particon {
+	width: 22px;
+	height: 22px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	display: inline-block;
+	&.particon-angular {
+		background-image: url('../img/angular.svg');
+		background-size: 18px 20px;
+	}
+	&.particon-code {
+		background-image: url('../img/code.svg');
+		background-size: 20px 16px;
+	}
+}
+
+.icon-search {
+	position: relative;
+	width: 200px;
+	margin: 0 auto 24px auto;
+	img {
+		width: 18px;
+		position: absolute;
+		top: 4px;
+		right: 6px;
+	}
+	input {
+		border-radius: 4px;
+		border: 1px solid #d2d2d2;
+		height: 26px;
+		font-size: 14px;
+		font-family: @font-stack;
+		text-indent: 8px;
+		width: 100%;
+		padding-right: 24px;
+	}
+}
