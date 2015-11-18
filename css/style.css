@@ -216,6 +216,7 @@ p.small-body {
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
   margin: 40px 0;
+  overflow: hidden;
 }
 .content .flip .wrapper .padding {
   padding: 30px;
@@ -223,9 +224,14 @@ p.small-body {
 .content .flip .wrapper .padding.no-bottom-padding {
   padding-bottom: 0;
 }
-.content .flip .wrapper > header {
+.content .flip .wrapper header {
   background: #f1f1f1;
   padding: 15px 30px;
+}
+.content .flip .wrapper footer {
+  background: #f1f1f1;
+  text-align: right;
+  padding: 15px;
 }
 .animate-container {
   font-size: 0;
@@ -234,9 +240,9 @@ p.small-body {
 }
 .animate-container .animate-block {
   background: #fff;
-  width: 100px;
-  height: 100px;
-  margin: 50px auto;
+  width: 70px;
+  height: 70px;
+  margin: 20px auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transform: translateX(-100%);
   opacity: 1;
@@ -258,16 +264,7 @@ p.small-body {
 .input-group ul li {
   cursor: pointer;
 }
-.input-group.corners {
-  max-width: 300px;
-  display: block;
-  margin: 0 auto;
-}
-.input-group.colors ul {
-  height: 50px;
-}
 .input-group.colors ul li {
-  border: 2px solid #999;
   width: 30px;
   height: 30px;
   border-radius: 2px;
@@ -280,6 +277,31 @@ p.small-body {
   margin: 0;
   width: 40px;
   height: 40px;
+}
+.input-group.corners {
+  max-width: 500px;
+  display: block;
+  margin: 0 auto;
+}
+.input-group.corners .range-wrap {
+  position: relative;
+  padding: 0 40px;
+}
+.input-group.corners .circle,
+.input-group.corners .square {
+  position: absolute;
+  border: 2px solid #333;
+  width: 30px;
+  height: 30px;
+}
+.input-group.corners .square {
+  top: 0;
+  left: 0;
+}
+.input-group.corners .circle {
+  border-radius: 50%;
+  right: 0;
+  top: 0;
 }
 .input-group.motion ul {
   width: 300px;
@@ -307,11 +329,7 @@ p.small-body {
   top: 0;
   left: 0;
 }
-.submit {
-  text-align: center;
-  padding: 30px;
-}
-.submit button {
+button.submit {
   border: none;
   background: #f1f1f1;
   padding: 10px 20px;
@@ -321,10 +339,11 @@ p.small-body {
   font-family: 'Raleway', sans-serif;
   cursor: pointer;
   transition: 0.25s ease-in-out background-color, 0.25s ease-in-out color;
+  right: 0;
 }
 input[type=range] {
   -webkit-appearance: none;
-  margin: 12px 0;
+  margin: 10px 0;
   width: 100%;
 }
 input[type=range]:focus {

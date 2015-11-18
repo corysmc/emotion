@@ -62,17 +62,13 @@ angular.module('app.services', [])
     })
     .factory('colors', function() {
         var colors = [{
-            'name': 'white',
-            'hex': '#FFF',
-            "font": '#333'
-        }, {
             'name': 'yellow',
             'hex': '#F8BD0B',
             "font": '#333'
         }, {
             'name': 'orange',
             'hex': '#FD8344',
-            "font": '#333'
+            "font": '#FFF'
         }, {
             'name': 'red',
             'hex': '#FC1343',
@@ -80,7 +76,7 @@ angular.module('app.services', [])
         }, {
             'name': 'purple',
             'hex': '#CD7BDD',
-            "font": '#333'
+            "font": '#FFF'
         }, {
             'name': 'blue',
             'hex': '#007CDC',
@@ -88,7 +84,7 @@ angular.module('app.services', [])
         }, {
             'name': 'green',
             'hex': '#8BC443',
-            "font": '#333'
+            "font": '#FFF'
         }, {
             'name': 'grey',
             'hex': '#D0D1D5',

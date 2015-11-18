@@ -21,7 +21,7 @@ personalityApp.controller('mainController', function($scope, $location, colors, 
     $scope.motions = motions;
     $scope.emotion ={};
     $scope.emotion.name = emotions.random();
-
+    $scope.Q = 1;
     $scope.submitEmotion = function(emotion){
         $location.path( '/results' );
         console.log(emotion);
@@ -35,9 +35,13 @@ personalityApp.controller('mainController', function($scope, $location, colors, 
     };
     //this pulls in the component groups for the sidebar//
 });
-personalityApp.controller('resultsController', function($scope, services, $routeParams) {
+personalityApp.controller('resultsController', function($scope, services, $routeParams, $location) {
     //gets component id from URL
     var questionID = $routeParams.questionID;
     $scope.question = services.get(questionID);
+
+    $scope.restart = function(){
+        $location.path( '/' );
+    };
 });
 
