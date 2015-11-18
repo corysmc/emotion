@@ -3,12 +3,16 @@
 
 <head>
     <title>The Emotion of Motion</title>
+    <meta name="viewport" content="width=device-width" />
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,300' rel='stylesheet' type='text/css'>
     
     <!-- Load Angular Stuff -->
     <script src="lib/angular/angular.min.js" type="text/javascript"></script>
     <script src="lib/angular/angular-animate.min.js" type="text/javascript"></script>
     <script src="lib/angular/angular-route.min.js" type="text/javascript"></script>
+    <!-- firebase & angularfire libraries -->
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/angular-fire/angularfire.min.js"></script>
 
     <!-- Main Styles -->
     <link href="css/style.css" type="text/css" rel="stylesheet" />
@@ -18,7 +22,7 @@
 
 </head>
 
-<body ng-controller="mainController">
+<body ng-controller="mainController" style="background-color: {{emotion.color.hex}}">
     <!-- STATIC TOPBAR -->
     <section id="navigation">
         <header>

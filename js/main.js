@@ -16,15 +16,23 @@ personalityApp.config(function($routeProvider) {
         });
 });
 
-personalityApp.controller('mainController', function($scope, $location, colors, motions, emotions) {
+personalityApp.controller('mainController', function($scope, $location, colors, motions, emotions, emotionsdata) {
     $scope.colors = colors;
     $scope.motions = motions;
-    $scope.emotion ={};
-    $scope.emotion.name = emotions.random();
     $scope.Q = 1;
-    $scope.submitEmotion = function(emotion){
-        $location.path( '/results' );
-        console.log(emotion);
+
+    $scope.emotion = emotions.current();
+    $scope.emotion.name = emotions.random();
+    console.log(emotionsdata.get($scope.emotion.name));
+    $scope.submitEmotion = function(Q, emotion) {
+        if (Q === 3) {
+            $location.path('/results');
+            var emotioncount = emotionsdata.get(emotion.name);
+
+            emotionsdata.update(emotion, emotioncount);
+        } else {
+            $scope.Q = (Q + 1);
+        }
     };
     //this function adds active class to sidebar items//
     $scope.isActive = function(viewRoot, viewEnd) {
@@ -35,13 +43,9 @@ personalityApp.controller('mainController', function($scope, $location, colors, 
     };
     //this pulls in the component groups for the sidebar//
 });
-personalityApp.controller('resultsController', function($scope, services, $routeParams, $location) {
+personalityApp.controller('resultsController', function($scope, $location) {
     //gets component id from URL
-    var questionID = $routeParams.questionID;
-    $scope.question = services.get(questionID);
-
-    $scope.restart = function(){
-        $location.path( '/' );
+    $scope.restart = function() {
+        $location.path('/');
     };
 });
-

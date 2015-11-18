@@ -1,63 +1,30 @@
 /*global angular : true fixes codekit error*/
-angular.module('app.services', [])
-    .factory('services', function() {
-        var service = [{
-            id: 1,
-            animation: 'cubic',
-            question: 'What do you think?',
-            name: 'Q1',
-
-            //Basic Particle Components
-        }, {
-            id: 2,
-            animation: 'cubic',
-            question: 'What are you thinking?',
-            name: 'Q2',
-
-            //Basic Particle Components
-        }, {
-            id: 3,
-            animation: 'cubic',
-            question: 'What do you think?',
-            name: 'Q3',
-
-            //Basic Particle Components
-        }, {
-            id: 4,
-            animation: 'cubic',
-            question: 'What are you thinking?',
-            name: 'Q4',
-
-            //Basic Particle Components
-        }, {
-            id: 5,
-            animation: 'cubic',
-            question: 'What do you think?',
-            name: 'Q5',
-
-            //Basic Particle Components
-        }, {
-            id: 6,
-            animation: 'cubic',
-            question: 'What are you thinking?',
-            name: 'Q6',
-
-            //Basic Particle Components
-        }];
-
+/*global Firebase : true fixes codekit error*/
+angular.module('app.services', ['firebase'])
+    .factory('emotionsdata', function($firebase) {
+        var firebaseUrl = 'https://glaring-heat-7055.firebaseio.com/';
+        var ref = new Firebase(firebaseUrl);
+        var emotionsRef = ref.child('emotions');
+        var emotions = $firebase(emotionsRef).$asArray();
         return {
             all: function() {
-                return service;
+                return emotions;
             },
-            get: function(id) {
-
-                return service.filter(function(obj) {
-                    if (obj.id === id) {
+            get: function(name) {
+                console.log(name);
+                return emotions.filter(function(obj) {
+                    if (obj.name === name) {
                         return obj;
                     }
                 })[0];
-            }
+            },
+            update: function(emotion, count) {
 
+                console.log('update emotion: ', emotion);
+                emotionsRef.child(emotion.name).update({
+                    "test": "test"
+                });
+            },
         };
     })
     .factory('colors', function() {
@@ -120,6 +87,18 @@ angular.module('app.services', [])
     })
     .factory('emotions', function() {
         var emotions = ['interest', 'aniticipation', 'serenity', 'love', 'agressiveness', 'contempt', 'remorse'];
+        var emotion = {
+            "color": {
+                "name": "blue",
+                "hex": "#007CDC",
+                "font": "#FFF",
+            },
+            "radius": "0",
+            "motion": {
+                "name": "ease-out",
+                "cubicbezier": "0,0,.58,1"
+            }
+        };
         return {
             all: function() {
                 return emotions;
@@ -127,6 +106,9 @@ angular.module('app.services', [])
             random: function() {
                 var random = emotions[Math.floor(Math.random() * emotions.length)];
                 return random;
+            },
+            current: function() {
+                return emotion;
             }
 
         };

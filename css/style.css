@@ -217,6 +217,7 @@ p.small-body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
   margin: 40px 0;
   overflow: hidden;
+  transition: margin 0.25s ease-in-out;
 }
 .content .flip .wrapper .padding {
   padding: 30px;
@@ -232,6 +233,12 @@ p.small-body {
   background: #f1f1f1;
   text-align: right;
   padding: 15px;
+}
+@media screen and (max-width: 500px) {
+  .content .flip .wrapper {
+    margin: 0;
+    border-radius: 0;
+  }
 }
 .animate-container {
   font-size: 0;
@@ -333,13 +340,15 @@ button.submit {
   border: none;
   background: #f1f1f1;
   padding: 10px 20px;
-  width: 200px;
   border-radius: 2px;
   font-size: 14px;
   font-family: 'Raleway', sans-serif;
   cursor: pointer;
   transition: 0.25s ease-in-out background-color, 0.25s ease-in-out color;
   right: 0;
+}
+button.submit.back {
+  float: left;
 }
 input[type=range] {
   -webkit-appearance: none;
