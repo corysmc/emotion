@@ -1,0 +1,90 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300);
+body {
+  font-size: 0;
+  font-family: 'Raleway'; }
+
+.animate-container {
+  margin: 200px auto 20px;
+  width: 500px;
+  height: 200px;
+  background: #f1f1f1;
+  font-size: 0;
+  overflow: hidden; }
+
+.animate-block {
+  background: #fff;
+  width: 100px;
+  height: 100px;
+  margin: 50px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateX(0);
+  opacity: 1;
+  transform: translateX(100px); }
+  .animate-block.ng-hide {
+    display: block !important; }
+  .animate-block.ng-hide {
+    transform: translateX(-100px); }
+  .animate-block.ng-animate.animate-block-1 {
+    transition: all .5s linear; }
+  .animate-block.ng-animate.animate-block-2 {
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* easeInOutBack */ }
+  .animate-block.ng-animate.animate-block-3 {
+    transition: all 0.5s cubic-bezier(0.005, 0.64, 1, 0.145);
+    /* custom */ }
+  .animate-block.ng-animate.animate-block-4 {
+    transition: all .5s ease-in-out; }
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+    opacity: 1; }
+  100% {
+    transform: translateX(100%);
+    opacity: 0; } }
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0; }
+  100% {
+    transform: translateX(0);
+    opacity: 1; } }
+.toggle-controller {
+  width: 300px;
+  margin: 0 auto;
+  border-radius: 4px;
+  overflow: hidden; }
+
+.toggle {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px 0;
+  width: 74.25px;
+  background: #f1f1f1;
+  margin-left: 1px; }
+  .toggle:first-child {
+    margin-left: 0; }
+  .toggle.active {
+    background-color: #888;
+    color: #fff; }
+
+.title {
+  font-size: 15px;
+  text-align: center;
+  padding: 30px;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0; }
+
+.personalities {
+  width: 800px;
+  margin: 10px auto; }
+  .personalities .personality-photo {
+    box-sizing: border-box;
+    padding: 30px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover; }

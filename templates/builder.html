@@ -1,0 +1,39 @@
+<div class="wrapper">
+    <div class="padding no-bottom-padding">
+        <h1>{{emotion.name}}</h1>
+        <p>Use the controls to build the emotion: {{emotion.name}}.
+    </div>
+    <div class="animate-container">
+        <div class="animate-block" ng-class="{'move-right': moveRight}" ng-click="moveRight = !moveRight" style="border-radius:{{emotion.radius}}%; background-color:{{emotion.color.hex}}; transition: cubic-bezier({{emotion.motion.cubicbezier}}) .5s transform"></div>
+    </div>
+    <header><h2>Pick a Color</h2></header>
+    <div class="input-group colors padding">
+        <ul>
+            <li ng-repeat="color in colors" style="background-color:{{color.hex}}; border-radius: {{$parent.emotion.radius}}%" ng-click="$parent.emotion.color = color;" ng-class="{'active':$parent.emotion.color == color}">
+            </li>
+        </ul>
+    </div>
+    <header><h2>Round Corners</h2></header>
+    <div class="input-group corners padding">
+        <input type="range" min="0" max="50" ng-model="emotion.radius">
+    </div>
+    
+    <header><h2>Motion</h2></header>
+    <div class="input-group motion padding">
+        <ul>
+            <li class="motion" ng-repeat="motion in motions" ng-click="$parent.emotion.motion = motion; $parent.moveRight = !$parent.moveRight" ng-class="{'inactive':$parent.emotion.motion !== motion}" style=" border-radius: {{($parent.emotion.radius * 2 /100)*20}}px; background-color:{{$parent.emotion.color.hex}}; color:{{$parent.emotion.color.font}} ">
+                {{motion.name}}
+            </li>
+        </ul>
+    </div>
+    <div class="submit">
+        <button ng-click="submitEmotion(emotion);" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color:{{emotion.color.hex}}; color:{{emotion.color.font}} ">
+            Done
+        </button>
+    </div>
+    <style>
+    body{
+        background-color:{{emotion.color.hex}};
+    }
+    </style>
+</div>

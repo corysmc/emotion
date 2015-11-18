@@ -1,0 +1,19 @@
+.animate-container {
+    //background: #f1f1f1;
+    font-size: 0;
+    overflow: hidden;
+    position: relative;
+    .animate-block {
+        background: #fff;
+        width: 100px;
+        height: 100px;
+        margin: 50px auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+        transform: translateX(-100%);
+        opacity: 1;
+        cursor: pointer;
+        &.move-right {
+            transform: translateX(100%);
+        }
+    }
+}

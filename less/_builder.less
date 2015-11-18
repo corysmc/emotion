@@ -1,0 +1,80 @@
+.input-group {
+    text-align: center;
+    label {
+        display: block;
+    }
+    ul {
+        margin: 0 auto;
+        display: block;
+        li {
+            cursor: pointer;
+        }
+    }
+    &.corners {
+        max-width: 300px;
+        display: block;
+        margin: 0 auto;
+    }
+    &.colors ul {
+        height: 50px;
+        li {
+            border:2px solid #999;
+            width: 30px;
+            height: 30px;
+            border-radius: 2px;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 5px;
+            transition: width .25s linear, height .25s linear, margin .25s linear;
+            &.active {
+                margin: 0;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+    &.motion {
+        ul {
+            width: 300px;
+            li {
+                display: inline-block;
+                background: #f1f1f1;
+                width: 140px;
+                border-radius: 3px;
+                margin: 5px;
+                height: 40px;
+                line-height: 40px;
+                padding: 0 15px;
+                transition: .25s ease-in-out background-color, .25s ease-in-out color;
+                border-radius: 3px !important;
+                &.inactive {
+                    background-color: #f1f1f1 !important;
+                    color: #333 !important;
+                }
+            }
+        }
+    }
+}
+
+.emotion-title {
+    font-size: 18px;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.submit{
+    text-align: center;
+    padding: 30px;
+    button{
+        border:none;
+        background:#f1f1f1;
+        padding: 10px 20px;
+        width:200px;
+        border-radius: 2px;
+        font-size:14px;
+        font-family: @font-stack;
+        cursor:pointer;
+        transition: .25s ease-in-out background-color, .25s ease-in-out color;
+    }
+}
