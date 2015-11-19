@@ -2,10 +2,30 @@
     <div class="padding">
         <h1>Results</h1>
         <div class="hr"></div>
-        <h2>Does motion have emotion?</h2>
-        <p>Results will show up here</p>
+        <table style="width:100%">
+            <tr class="header">
+                <th></th>
+                <th>Color</th>
+                <th>Radius</th>
+                <th>Motion</th>
+            </tr>
+            <tr ng-repeat="emotion in emotions" ng-class-even="'even'">
+                <td class="left-align">{{emotion.$id}}</td>
+                <td>
+                    <div ng-repeat="color in emotion.colors | orderObjectBy:'count':'reverse' | limitTo:1" style="background-color: {{color.hex}}">{{color.count}}</div>
+                </td>
+                <td>
+                    <div ng-repeat="radius in emotion.radius | orderObjectBy:'count':'reverse' | limitTo:1">{{radius.count}}</div>
+                </td>
+                <td>
+                    <div ng-repeat="motion in emotion.motions | orderObjectBy:'count':'reverse' | limitTo:1">{{motion.name}}</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <footer>
         <button class="submit" ng-click="restart();" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color:{{emotion.color.hex}}; color:{{emotion.color.font}} ">
             Restart
         </button>
-    </div>
+    </footer>
 </div>

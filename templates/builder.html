@@ -4,10 +4,10 @@
         <p>Use the controls to build the emotion: {{emotion.name}}.
     </div>
     <div class="animate-container">
-        <div class="animate-block" ng-class="{'move-right': moveRight}" ng-click="moveRight = !moveRight" style="border-radius:{{emotion.radius}}%; background-color:{{emotion.color.hex}}; transition: cubic-bezier({{emotion.motion.cubicbezier}}) .5s transform"></div>
+        <div class="animate-block" ng-click="moveRight = !moveRight" style="border-radius:{{emotion.radius}}%; background-color:{{emotion.color.hex}}; animation: {{emotion.motion.animation}} linear 0.8s;"></div>
     </div>
-    <div class="scroll">
-        <div ng-show="Q == 1">
+    <div class="slide-section Q{{Q}}">
+        <div class="slide-content" ng-class="{'left': Q == 2 || Q == 3}">
             <header>
                 <h2>Pick a Color</h2></header>
             <div class="input-group colors padding">
@@ -17,7 +17,7 @@
                 </ul>
             </div>
         </div>
-        <div ng-show="Q == 2">
+        <div class="slide-content" ng-class="{'right': Q == 1, 'left': Q == 3}">
             <header>
                 <h2>Round Corners</h2></header>
             <div class="input-group corners padding">
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div ng-show="Q == 3">
+        <div class="slide-content" ng-class="{'right': Q == 2 || Q == 1}">
             <header>
                 <h2>Motion</h2></header>
             <div class="input-group motion padding">
@@ -39,16 +39,13 @@
                 </ul>
             </div>
         </div>
-        <footer>
-            <button class="submit back" 
-                ng-click="Q = (Q-1)" 
-                ng-show="Q>1"
-                style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color:{{emotion.color.hex}}; color:{{emotion.color.font}} ">
-                <span>Back</span>
-            </button>
-            <button class="submit" ng-click="submitEmotion(Q, emotion);" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color:{{emotion.color.hex}}; color:{{emotion.color.font}} ">
-                <span ng-show="Q !== 3">Next</span><span ng-show="Q == 3">Done</span>
-            </button>
-        </footer>
     </div>
+    <footer>
+        <button class="submit back" ng-click="Q = (Q-1)" ng-show="Q>1" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color:{{emotion.color.hex}}; color:{{emotion.color.font}} ">
+            <span>Back</span>
+        </button>
+        <button class="submit" ng-click="submitEmotion(Q, emotion);" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color:{{emotion.color.hex}}; color:{{emotion.color.font}} ">
+            <span ng-show="Q !== 3">Next</span><span ng-show="Q == 3">Done</span>
+        </button>
+    </footer>
 </div>

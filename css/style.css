@@ -225,6 +225,34 @@ p.small-body {
 .content .flip .wrapper .padding.no-bottom-padding {
   padding-bottom: 0;
 }
+.content .flip .wrapper .slide-section {
+  position: relative;
+  transition: 0.3s ease-in-out height;
+}
+.content .flip .wrapper .slide-section.Q1 {
+  height: 152px;
+}
+.content .flip .wrapper .slide-section.Q2 {
+  height: 152px;
+}
+.content .flip .wrapper .slide-section.Q3 {
+  height: 400px;
+}
+.content .flip .wrapper .slide-section .slide-content {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  transition: 0.5s ease-in-out all;
+}
+.content .flip .wrapper .slide-section .slide-content.right {
+  left: 100%;
+}
+.content .flip .wrapper .slide-section .slide-content.left {
+  left: -100%;
+}
+.content .flip .wrapper .slide-section .slide-content.ng-hide {
+  right: 100%;
+}
 .content .flip .wrapper header {
   background: #f1f1f1;
   padding: 15px 30px;
@@ -242,7 +270,6 @@ p.small-body {
 }
 .animate-container {
   font-size: 0;
-  overflow: hidden;
   position: relative;
 }
 .animate-container .animate-block {
@@ -251,12 +278,116 @@ p.small-body {
   height: 70px;
   margin: 20px auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transform: translateX(-100%);
   opacity: 1;
   cursor: pointer;
 }
-.animate-container .animate-block.move-right {
-  transform: translateX(100%);
+.animate-container .animate-block.animate {
+  animation-iteration-count: infinite;
+}
+.element-animation {
+  animation: bounce linear 0.8s;
+  animation-iteration-count: infinite;
+}
+@keyframes bounce {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  15% {
+    transform: translate(0px, -25px);
+  }
+  30% {
+    transform: translate(0px, 0px);
+  }
+  45% {
+    transform: translate(0px, -15px);
+  }
+  60% {
+    transform: translate(0px, 0px);
+  }
+  75% {
+    transform: translate(0px, -5px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+.element-animation {
+  animation: wobble linear 1s;
+  animation-iteration-count: infinite;
+}
+@keyframes wobble {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  10% {
+    transform: translate(-10px, 0px);
+  }
+  20% {
+    transform: translate(10px, 0px);
+  }
+  30% {
+    transform: translate(-10px, 0px);
+  }
+  40% {
+    transform: translate(10px, 0px);
+  }
+  50% {
+    transform: translate(-10px, 0px);
+  }
+  60% {
+    transform: translate(10px, 0px);
+  }
+  70% {
+    transform: translate(-10px, 0px);
+  }
+  80% {
+    transform: translate(10px, 0px);
+  }
+  90% {
+    transform: translate(-10px, 0px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+.element-animation {
+  animation: tada linear 1s;
+  animation-iteration-count: infinite;
+}
+@keyframes tada {
+  0% {
+    transform: rotate(0deg) scaleX(1) scaleY(1);
+  }
+  10% {
+    transform: rotate(-3deg) scaleX(0.8) scaleY(0.8);
+  }
+  20% {
+    transform: rotate(-3deg) scaleX(0.8) scaleY(0.8);
+  }
+  30% {
+    transform: rotate(3deg) scaleX(1.2) scaleY(1.2);
+  }
+  40% {
+    transform: rotate(-3deg) scaleX(1.2) scaleY(1.2);
+  }
+  50% {
+    transform: rotate(3deg) scaleX(1.2) scaleY(1.2);
+  }
+  60% {
+    transform: rotate(-3deg) scaleX(1.2) scaleY(1.2);
+  }
+  70% {
+    transform: rotate(3deg) scaleX(1.2) scaleY(1.2);
+  }
+  80% {
+    transform: rotate(-3deg) scaleX(1.2) scaleY(1.2);
+  }
+  90% {
+    transform: rotate(3deg) scaleX(1.2) scaleY(1.2);
+  }
+  100% {
+    transform: rotate(0deg) scaleX(1.2) scaleY(1.2);
+  }
 }
 .input-group {
   text-align: center;
@@ -446,4 +577,27 @@ input[type=range]:focus::-ms-fill-upper {
 }
 #navigation ul li.active {
   color: blue;
+}
+table {
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+table tr {
+  cellpadding: 15px;
+  padding: 5px;
+  line-height: 25px;
+}
+table tr.even {
+  background-color: #f1f1f1;
+}
+table tr th {
+  font-weight: bold;
+  text-align: center;
+}
+table tr td {
+  padding: 0 8px;
+  text-align: center;
+}
+table tr td.left-align {
+  text-align: left;
 }

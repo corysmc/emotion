@@ -1,0 +1,107 @@
+{
+  "emotions" : {
+    "agressiveness" : {
+      "colors" : {
+        "blue" : {
+          "count" : 41,
+          "hex" : "#007CDC"
+        },
+        "green" : {
+          "count" : 1,
+          "hex" : "#8BC443"
+        },
+        "orange" : {
+          "count" : 1,
+          "hex" : "#FD8344"
+        },
+        "purple" : {
+          "count" : 12,
+          "hex" : "#CD7BDD"
+        },
+        "red" : {
+          "count" : 20,
+          "hex" : "#FC1343"
+        }
+      },
+      "motions" : {
+        "bounce" : {
+          "count" : 7,
+          "name" : "bounce",
+          "test" : "test"
+        },
+        "ease-out" : {
+          "count" : 2,
+          "test" : "test"
+        },
+        "wobble" : {
+          "count" : 8,
+          "name" : "wobble",
+          "test" : "test"
+        }
+      },
+      "radius" : {
+        "0" : {
+          "count" : 1
+        },
+        "13" : {
+          "count" : 1
+        },
+        "14" : {
+          "count" : 1
+        },
+        "17" : {
+          "count" : 1
+        },
+        "21" : {
+          "count" : 1
+        },
+        "22" : {
+          "count" : 1
+        },
+        "23" : {
+          "count" : 1
+        },
+        "31" : {
+          "count" : 7
+        },
+        "34" : {
+          "count" : 1
+        },
+        "36" : {
+          "count" : 1
+        },
+        "39" : {
+          "count" : 2
+        },
+        "48" : {
+          "count" : 3
+        }
+      },
+      "test" : "test"
+    },
+    "aniticipation" : {
+      "test" : "test"
+    },
+    "contempt" : {
+      "test" : "test"
+    },
+    "interest" : {
+      "test" : "test"
+    },
+    "love" : {
+      "color" : {
+        "count" : "1",
+        "hex" : "#007CDC"
+      },
+      "count" : "1",
+      "test" : "test"
+    },
+    "remorse" : {
+      "count" : "1",
+      "test" : "test"
+    },
+    "serenity" : {
+      "test" : "test"
+    }
+  }
+}

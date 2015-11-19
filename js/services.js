@@ -18,12 +18,79 @@ angular.module('app.services', ['firebase'])
                     }
                 })[0];
             },
-            update: function(emotion, count) {
+            update: function(emotion, currentData) {
 
-                console.log('update emotion: ', emotion);
-                emotionsRef.child(emotion.name).update({
-                    "test": "test"
-                });
+                var get = function(name) {
+                    console.log(name);
+                    return currentData.filter(function(obj) {
+                        if (obj.$id === name) {
+                            return obj;
+                        }
+                    })[0];
+                };
+
+                var currentEmotionData = get(emotion.name);
+                //console.log(currentEmotionData.colors[emotion.color.name]);
+                var currentColorCount = 0;
+                var currentRadiusCount = 0;
+                var currentMotionCount = 0;
+                if (currentEmotionData) {
+                    if (currentEmotionData.colors) {
+                        if (currentEmotionData.colors[emotion.color.name]) {
+                            currentColorCount = currentEmotionData.colors[emotion.color.name].count;
+                        }
+                    }
+                    if (currentEmotionData.radius) {
+                        if (currentEmotionData.radius[emotion.radius]) {
+                            currentRadiusCount = currentEmotionData.radius[emotion.radius].count;
+                        }
+                    }
+                    if (currentEmotionData.motions) {
+                        if (currentEmotionData.motions[emotion.motion.name]) {
+                            currentMotionCount = currentEmotionData.motions[emotion.motion.name].count;
+                        }
+                    }
+                }
+
+                var colorCount = {
+                    'hex': emotion.color.hex,
+                    'count': currentColorCount + 1,
+                };
+                var radiusCount = {
+                    'count': currentRadiusCount + 1,
+                };
+                var motionCount = {
+                    'name': emotion.motion.name,
+                    'count': currentMotionCount + 1,
+                };
+
+
+                // emotionsRef.child(emotion.name).child('colors').child(emotion.color.name).update(colorCount);
+                // emotionsRef.child(emotion.name).child('radius').child(emotion.radius).update(radiusCount);
+                // emotionsRef.child(emotion.name).child('motions').child(emotion.motion.name).update(motionCount);
+                var obj = {};
+                obj[emotion.name] = {};
+                obj[emotion.name].colors = {};
+                obj[emotion.name].radius = {};
+                obj[emotion.name].motion = {};
+                obj[emotion.name].colors[emotion.color.name] = colorCount;
+                obj[emotion.name].radius[emotion.radius] = radiusCount;
+                obj[emotion.name].motion[emotion.motion.name] = motionCount;
+                // var obj = {
+                //     'colors' : {
+                //         emotion.color.name : colorCount
+                //     },
+                //     'radius' : {
+                //         emotion.radius : radiusCount
+                //     },
+                //     'motion' : {
+                //         emotion.motion.name : motionCount
+                //     }
+                // };
+
+                console.log(obj);
+
+                emotionsRef.update(obj)
             },
         };
     })
@@ -62,6 +129,15 @@ angular.module('app.services', ['firebase'])
     })
     .factory('motions', function() {
         var motions = [{
+            'name': 'bounce',
+            'animation': 'bounce'
+        }, {
+            'name': 'wobble',
+            'animation': 'wobble'
+        }, {
+            'name': 'tada',
+            'animation': 'tada'
+        }, {
             'name': 'ease',
             'cubicbezier': '.25,.1,.25,1'
         }, {
@@ -105,11 +181,11 @@ angular.module('app.services', ['firebase'])
             },
             random: function() {
                 var random = emotions[Math.floor(Math.random() * emotions.length)];
+                //var random = emotions[4];
                 return random;
             },
             current: function() {
                 return emotion;
             }
-
         };
     });

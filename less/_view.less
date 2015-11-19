@@ -38,6 +38,34 @@
                     padding-bottom: 0;
                 }
             }
+            .slide-section {
+                position: relative;
+                transition: .3s ease-in-out height;
+                &.Q1{
+                    height:152px;
+                }
+                &.Q2{
+                    height: 152px;
+                }
+                &.Q3{
+                    height:400px;
+                }
+                .slide-content {
+                    position: absolute;
+                    width:100%;
+                    left:0;
+                    transition: .5s ease-in-out all;
+                    &.right{
+                        left:100%;
+                    }
+                    &.left{
+                        left:-100%;
+                    }
+                    &.ng-hide {
+                        right: 100%;
+                    }
+                }
+            }
             header {
                 background: #f1f1f1;
                 padding: 15px 30px;
@@ -47,9 +75,9 @@
                 text-align: right;
                 padding: 15px;
             }
-            @media screen and (max-width : 500px) {
-                margin:0;
-                border-radius:0;
+            @media screen and (max-width: 500px) {
+                margin: 0;
+                border-radius: 0;
             }
         }
     }

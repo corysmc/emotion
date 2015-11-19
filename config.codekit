@@ -11,6 +11,17 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/glaring-heat-7055-export.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/glaring-heat-7055-export.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/glaring-heat-7055-export-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
 	"\/img\/buzz.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -218,6 +229,26 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/less\/_reset.less",
 		"outputAbbreviatedPath": "\/css\/_reset.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"relativeURLS": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"strictImports": 0,
+		"strictMath": 0,
+		"strictUnits": 0
+		},
+	"\/less\/_table.less": {
+		"allowInsecureImports": 0,
+		"createSourceMap": 0,
+		"disableJavascript": 0,
+		"fileType": 1,
+		"ieCompatibility": 1,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/less\/_table.less",
+		"outputAbbreviatedPath": "\/css\/_table.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -440,6 +471,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/myers-briggs.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 242742,
+		"inputAbbreviatedPath": "\/myers-briggs.png",
+		"outputAbbreviatedPath": "\/myers-briggs.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/templates\/builder.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -461,7 +503,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Cory",
+"lastSavedByUser": "Cory McArthur",
 "manualImportLinks": {
 	},
 "projectAttributes": {
