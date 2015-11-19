@@ -130,19 +130,21 @@ angular.module('app.services', ['firebase'])
     .factory('motions', function() {
         var motions = [{
             'name': 'bounce',
-            'animation': 'bounce'
+            'animation': 'bounce',
+            'time': '800'
         }, {
             'name': 'wobble',
-            'animation': 'wobble'
+            'animation': 'wobble',
+            'time': '3800'
         }, {
             'name': 'tada',
             'animation': 'tada'
         }, {
-            'name': 'ease',
-            'cubicbezier': '.25,.1,.25,1'
+            'name': 'rubberBand',
+            'animation': 'rubberBand'
         }, {
-            'name': 'linear',
-            'cubicbezier': '0,0,1,1'
+            'name': 'jello',
+             'animation': 'jello',
         }, {
             'name': 'ease-in',
             'cubicbezier': '.42,0,1,1'

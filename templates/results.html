@@ -12,13 +12,13 @@
             <tr ng-repeat="emotion in emotions" ng-class-even="'even'">
                 <td class="left-align">{{emotion.$id}}</td>
                 <td>
-                    <div ng-repeat="color in emotion.colors | orderObjectBy:'count':'reverse' | limitTo:1" style="background-color: {{color.hex}}">{{color.count}}</div>
+                    <div class="result-preview" ng-repeat="color in emotion.colors | orderObjectBy:'count':'reverse' | limitTo:1" style="background-color: {{color.hex}}; border-radius: {{emotion.radius}}%;">{{color.count}}</div>
                 </td>
                 <td>
-                    <div ng-repeat="radius in emotion.radius | orderObjectBy:'count':'reverse' | limitTo:1">{{radius.count}}</div>
+                    <div class="result-preview" ng-repeat="radius in emotion.radius | orderObjectBy:'count':'reverse' | limitTo:1" style="background-color: {{color.hex}}; border-radius: {{emotion.radius}}%;">{{radius.count}}</div>
                 </td>
                 <td>
-                    <div ng-repeat="motion in emotion.motions | orderObjectBy:'count':'reverse' | limitTo:1">{{motion.name}}</div>
+                    <div class="result-preview" ng-repeat="motion in emotion.motions | orderObjectBy:'count':'reverse' | limitTo:1" style="background-color: {{color.hex}}; border-radius: {{emotion.radius}}%;">{{motion.count}}</div>
                 </td>
             </tr>
         </table>

@@ -11,18 +11,31 @@ personalityApp.config(function($routeProvider) {
             templateUrl: 'templates/results.html',
             controller: 'resultsController'
         })
+        .when('/results/:id', {
+            templateUrl: 'templates/results.html',
+            controller: 'resultsController'
+        })
         .otherwise({
             redirectTo: '/'
         });
 });
 
-personalityApp.controller('mainController', function($scope, $location, colors, motions, emotions, emotionsdata) {
+personalityApp.controller('mainController', function($scope, $location, $timeout, colors, motions, emotions, emotionsdata) {
     $scope.colors = colors;
     $scope.motions = motions;
     $scope.Q = 1;
 
     $scope.emotion = emotions.current();
     $scope.emotion.name = emotions.random();
+
+    $scope.changeMotion = function(motion) {
+        console.log('motion', motion);
+        $scope.animation = null;
+        
+        $timeout(function() {
+            $scope.animation = motion;
+        }, 10);
+    };
     $scope.submitEmotion = function(Q, emotion) {
         if (Q === 3) {
             $location.path('/results');
@@ -44,34 +57,35 @@ personalityApp.controller('mainController', function($scope, $location, colors, 
 personalityApp.controller('resultsController', function($scope, $location, emotionsdata) {
     //gets component id from URL
     $scope.emotions = emotionsdata.all();
+
     $scope.restart = function() {
         $location.path('/');
     };
 });
 personalityApp.filter('orderObjectBy', function() {
-        return function (items, field, reverse) {
-          var filtered = [];
-          angular.forEach(items, function(item) {
+    return function(items, field, reverse) {
+        var filtered = [];
+        angular.forEach(items, function(item) {
             filtered.push(item);
-          });
+        });
 
-          function index(obj, i) {
+        function index(obj, i) {
             return obj[i];
-          }
-          filtered.sort(function (a, b) {
+        }
+        filtered.sort(function(a, b) {
             var comparator;
             var reducedA = field.split('.').reduce(index, a);
             var reducedB = field.split('.').reduce(index, b);
             if (reducedA === reducedB) {
-              comparator = 0;
+                comparator = 0;
             } else {
-              comparator = (reducedA > reducedB ? 1 : -1);
+                comparator = (reducedA > reducedB ? 1 : -1);
             }
             return comparator;
-          });
-          if (reverse) {
+        });
+        if (reverse) {
             filtered.reverse();
-          }
-          return filtered;
-        };
-      });
+        }
+        return filtered;
+    };
+});
