@@ -145,22 +145,24 @@ angular.module('app.services', ['firebase'])
         }, {
             'name': 'jello',
              'animation': 'jello',
-        }, {
-            'name': 'ease-in',
-            'cubicbezier': '.42,0,1,1'
-        }, {
-            'name': 'ease-out',
-            'cubicbezier': '0,0,.58,1'
-        }, {
-            'name': 'ease-in-out',
-            'cubicbezier': '.42,0,.58,1'
-        }, {
-            'name': 'snap',
-            'cubicbezier': '.4,.01,1,.5'
-        }, {
-            'name': 'Bounce',
-            'cubicbezier': '.42,0,.58,1'
-        }];
+         }
+        // , {
+        //     'name': 'ease-in',
+        //     'cubicbezier': '.42,0,1,1'
+        // }, {
+        //     'name': 'ease-out',
+        //     'cubicbezier': '0,0,.58,1'
+        // }, {
+        //     'name': 'ease-in-out',
+        //     'cubicbezier': '.42,0,.58,1'
+        // }, {
+        //     'name': 'snap',
+        //     'cubicbezier': '.4,.01,1,.5'
+        // }, {
+        //     'name': 'Bounce',
+        //     'cubicbezier': '.42,0,.58,1'
+        // }
+        ];
         return motions;
     })
     .factory('emotions', function() {

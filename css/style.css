@@ -497,6 +497,14 @@ p.small-body {
 .input-group ul li {
   cursor: pointer;
 }
+.input-group.colors .range-wrap {
+  position: relative;
+  padding: 0px;
+}
+.input-group.colors .range-wrap input[type=range]::-webkit-slider-runnable-track {
+  background: url(../img/hue.png) no-repeat left top;
+  background-size: 100% auto;
+}
 .input-group.colors ul li {
   width: 30px;
   height: 30px;

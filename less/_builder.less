@@ -10,21 +10,33 @@
             cursor: pointer;
         }
     }
-    &.colors ul {
-        //height: 50px;
-        li {
-            //border:2px solid #999;
-            width: 30px;
-            height: 30px;
-            border-radius: 2px;
-            display: inline-block;
-            vertical-align: middle;
-            margin: 5px;
-            transition: width .25s linear, height .25s linear, margin .25s linear;
-            &.active {
-                margin: 0;
-                width: 40px;
-                height: 40px;
+    &.colors {
+        .range-wrap {
+            position: relative;
+            padding: 0px;
+            input[type=range] {
+                &::-webkit-slider-runnable-track {
+                    background: url(../img/hue.png) no-repeat left top;
+                    background-size:100% auto;
+                }
+            }
+        }
+        ul {
+            //height: 50px;
+            li {
+                //border:2px solid #999;
+                width: 30px;
+                height: 30px;
+                border-radius: 2px;
+                display: inline-block;
+                vertical-align: middle;
+                margin: 5px;
+                transition: width .25s linear, height .25s linear, margin .25s linear;
+                &.active {
+                    margin: 0;
+                    width: 40px;
+                    height: 40px;
+                }
             }
         }
     }
@@ -95,7 +107,7 @@ button.submit {
     cursor: pointer;
     transition: .25s ease-in-out background-color, .25s ease-in-out color;
     right: 0;
-    &.back{
-        float:left;
+    &.back {
+        float: left;
     }
 }
