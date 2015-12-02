@@ -4,7 +4,7 @@
         <p>Use the controls to build the emotion: {{emotion.name}}.
     </div>
     <div class="animate-container">
-        <div class="animate-block" ng-click="moveRight = !moveRight" style="border-radius:{{emotion.radius}}%; background-color:{{emotion.color.hex}}; animation: {{animation.animation}} linear {{emotion.speed}}s; background-color: hsl({{emotion.hue}}, 100%, 43%)"></div>
+        <div class="animate-block" ng-click="moveRight = !moveRight" style="border-radius:{{emotion.radius}}%; background-color:{{emotion.color.hex}}; animation: {{animation.animation}} linear {{-emotion.speed}}s; background-color: hsl({{emotion.hue}}, 100%, 43%)"></div>
     </div>
     <div class="slide-section Q{{Q}}">
         <div class="slide-content" ng-class="{'left': Q == 2 || Q == 3}">
@@ -42,16 +42,16 @@
             <header>
                 <h2>Motion</h2>
             </header>
-            <div class="input-group corners padding">
+            <div class="input-group motion padding">
                 <div class="range-wrap">
-                    <div class="square"></div>
-                    <input type="range" min=".2" max="2" step=".1" ng-model="emotion.speed" ng-change="changeMotion(emotion.motion)">
-                    <div class="circle"></div>
+                    <div ng-include="'../img/turtle.svg'" class="speed-icon-left"></div>
+                    <input type="range" min="-2" max="-0.2" step=".01" ng-model="emotion.speed" ng-change="changeMotion(emotion.motion)">
+                    <div ng-include="'../img/rabbit.svg'" class="speed-icon-right"></div>
                 </div>
             </div>
             <div class="input-group motion padding">
                 <ul>
-                    <li class="motion" ng-repeat="motion in motions" ng-click="$parent.emotion.motion = motion; $parent.changeMotion(motion)" ng-class="{'inactive':$parent.emotion.motion !== motion}" style=" border-radius: {{($parent.emotion.radius * 2 /100)*20}}px; background-color:{{$parent.emotion.color.hex}}; color:{{$parent.emotion.color.font}} ">
+                    <li class="motion" ng-repeat="motion in motions" ng-click="$parent.emotion.motion = motion; $parent.changeMotion(motion)" ng-class="{'inactive':$parent.emotion.motion !== motion}" style=" border-radius: {{($parent.emotion.radius * 2 /100)*20}}px; background-color: hsl({{emotion.hue}}, 100%, 43%); color:{{$parent.emotion.color.font}} ">
                         {{motion.name}}
                     </li>
                 </ul>
@@ -59,10 +59,10 @@
         </div>
     </div>
     <footer>
-        <button class="submit back" ng-click="Q = (Q-1)" ng-show="Q>1" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color:{{emotion.color.hex}}; color:{{emotion.color.font}} ">
+        <button class="submit back" ng-click="Q = (Q-1)" ng-show="Q>1" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color: hsl({{emotion.hue}}, 100%, 43%); color:{{emotion.color.font}} ">
             <span>Back</span>
         </button>
-        <button class="submit" ng-click="submitEmotion(Q, emotion);" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color:{{emotion.color.hex}}; color:{{emotion.color.font}} ">
+        <button class="submit" ng-click="submitEmotion(Q, emotion);" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color: hsl({{emotion.hue}}, 100%, 43%); color:{{emotion.color.font}} ">
             <span ng-show="Q !== 3">Next</span><span ng-show="Q == 3">Done</span>
         </button>
     </footer>

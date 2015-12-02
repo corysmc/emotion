@@ -53,7 +53,7 @@ angular.module('app.services', ['firebase'])
                 }
 
                 var colorCount = {
-                    'hex': emotion.color.hex,
+                    'hue': emotion.hue,
                     'count': currentColorCount + 1,
                 };
                 var radiusCount = {
@@ -93,39 +93,6 @@ angular.module('app.services', ['firebase'])
                 emotionsRef.update(obj)
             },
         };
-    })
-    .factory('colors', function() {
-        var colors = [{
-            'name': 'yellow',
-            'hex': '#F8BD0B',
-            "font": '#333'
-        }, {
-            'name': 'orange',
-            'hex': '#FD8344',
-            "font": '#FFF'
-        }, {
-            'name': 'red',
-            'hex': '#FC1343',
-            "font": '#FFF'
-        }, {
-            'name': 'purple',
-            'hex': '#CD7BDD',
-            "font": '#FFF'
-        }, {
-            'name': 'blue',
-            'hex': '#007CDC',
-            "font": '#FFF'
-        }, {
-            'name': 'green',
-            'hex': '#8BC443',
-            "font": '#FFF'
-        }, {
-            'name': 'grey',
-            'hex': '#D0D1D5',
-            "font": '#333'
-        }];
-
-        return colors;
     })
     .factory('motions', function() {
         var motions = [{

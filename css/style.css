@@ -141,7 +141,6 @@ body {
   font-family: 'Raleway', sans-serif;
   color: #5a5a5a;
   background: #f1f1f1;
-  transition: 0.25s ease-in-out background-color;
 }
 a {
   text-decoration: none;
@@ -544,6 +543,28 @@ p.small-body {
   right: 0;
   top: 0;
 }
+.input-group.motion .range-wrap {
+  position: relative;
+  padding: 0 40px;
+}
+.input-group.motion .range-wrap .speed-icon-left,
+.input-group.motion .range-wrap .speed-icon-right {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+}
+.input-group.motion .range-wrap .speed-icon-left g path,
+.input-group.motion .range-wrap .speed-icon-right g path {
+  fill: #999;
+}
+.input-group.motion .range-wrap .speed-icon-left {
+  top: 0;
+  left: 0;
+}
+.input-group.motion .range-wrap .speed-icon-right {
+  right: 0;
+  top: 0;
+}
 .input-group.motion ul {
   width: 300px;
 }
@@ -578,7 +599,6 @@ button.submit {
   font-size: 14px;
   font-family: 'Raleway', sans-serif;
   cursor: pointer;
-  transition: 0.25s ease-in-out background-color, 0.25s ease-in-out color;
   right: 0;
 }
 button.submit.back {

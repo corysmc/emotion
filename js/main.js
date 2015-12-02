@@ -1,5 +1,5 @@
 /*global angular : true fixes codekit error*/
-var personalityApp = angular.module('personalityApp', ['ngRoute', 'ngAnimate', 'app.services']);
+var personalityApp = angular.module('personalityApp', ['ngRoute', 'ngAnimate', 'app.services', 'chart.js']);
 
 personalityApp.config(function($routeProvider) {
     $routeProvider
@@ -20,18 +20,19 @@ personalityApp.config(function($routeProvider) {
         });
 });
 
-personalityApp.controller('mainController', function($scope, $location, $timeout, colors, motions, emotions, emotionsdata) {
-    $scope.colors = colors;
+personalityApp.controller('mainController', function($scope, $location, $timeout, motions, emotions, emotionsdata) {
     $scope.motions = motions;
     $scope.Q = 1;
 
     $scope.emotion = emotions.current();
     $scope.emotion.name = emotions.random();
+    $scope.emotion.hue = 180;
+    $scope.emotion.speed = -1;
 
     $scope.changeMotion = function(motion) {
-        console.log('motion', motion);
+        //console.log('motion', motion);
         $scope.animation = null;
-        
+
         $timeout(function() {
             $scope.animation = motion;
         }, 10);
@@ -40,7 +41,8 @@ personalityApp.controller('mainController', function($scope, $location, $timeout
         if (Q === 3) {
             $location.path('/results');
 
-            emotionsdata.update(emotion, emotionsdata.all());
+            //emotionsdata.update(emotion, emotionsdata.all());
+            emotionsdata.add(emotion);
         } else {
             $scope.Q = (Q + 1);
         }
@@ -58,6 +60,17 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
     //gets component id from URL
     $scope.emotions = emotionsdata.all();
 
+    //start canvas
+    $scope.labels = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+    $scope.series = ['Series A', 'Series B'];
+    $scope.data = [
+        [65, 59, 80, 81, 56, 55, 40],
+        [28, 48, 40, 19, 86, 27, 90]
+    ];
+    $scope.onClick = function(points, evt) {
+        console.log(points, evt);
+    };
+    //end canvas
     $scope.restart = function() {
         $location.path('/');
     };

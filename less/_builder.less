@@ -17,7 +17,7 @@
             input[type=range] {
                 &::-webkit-slider-runnable-track {
                     background: url(../img/hue.png) no-repeat left top;
-                    background-size:100% auto;
+                    background-size: 100% auto;
                 }
             }
         }
@@ -66,6 +66,27 @@
         }
     }
     &.motion {
+        .range-wrap {
+            position: relative;
+            padding: 0 40px;
+            .speed-icon-left,
+            .speed-icon-right {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                g path{
+                    fill: #999;
+                }
+            }
+            .speed-icon-left {
+                top: 0;
+                left: 0;
+            }
+            .speed-icon-right {
+                right: 0;
+                top: 0;
+            }
+        }
         ul {
             width: 300px;
             li {
@@ -105,7 +126,7 @@ button.submit {
     font-size: 14px;
     font-family: @font-stack;
     cursor: pointer;
-    transition: .25s ease-in-out background-color, .25s ease-in-out color;
+    //transition: .25s ease-in-out background-color, .25s ease-in-out color;
     right: 0;
     &.back {
         float: left;

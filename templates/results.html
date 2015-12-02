@@ -2,6 +2,8 @@
     <div class="padding">
         <h1>Results</h1>
         <div class="hr"></div>
+        <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="false" chart-series="series" chart-click="onClick">
+        </canvas>
         <table style="width:100%">
             <tr class="header">
                 <th></th>
@@ -24,7 +26,7 @@
         </table>
     </div>
     <footer>
-        <button class="submit" ng-click="restart();" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color:{{emotion.color.hex}}; color:{{emotion.color.font}} ">
+        <button class="submit" ng-click="restart();" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color: hsl({{emotion.hue}}, 100%, 43%); color:{{emotion.color.font}} ">
             Restart
         </button>
     </footer>
