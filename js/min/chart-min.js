@@ -1,1 +1,0 @@
-angular.module("app.chart",[]).directive("chartJs",function(t){return{restrict:"E",scope:{config:"="},replace:!0,template:"<canvas></canvas>",link:function(t,c){t.config&&("scatter"==t.config.type&&new Chart.Scatter(c,t.config),"doughnut"==t.config.type&&new Chart(c,t.config))}}});

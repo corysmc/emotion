@@ -1,0 +1,1 @@
+angular.module("app.directives",[]).directive("moreDrawer",function(){return{restrict:"E",scope:{showdrawer:"=",height:"@",tophandle:"@",more:"@",less:"@"},replace:!0,transclude:!0,templateUrl:"../templates/more-drawer/lucid-more-drawer.html",compile:function(e,r){r.more||(r.more="More"),r.less||(r.less="Less")}}});

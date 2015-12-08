@@ -23,7 +23,6 @@ personalityApp.config(function($routeProvider) {
 personalityApp.controller('mainController', function($scope, $location, $timeout, motions, emotions, emotionsdata) {
     $scope.motions = motions;
     $scope.Q = 1;
-
     $scope.emotion = emotions.current();
 
     $scope.changeMotion = function(motion) {
@@ -59,6 +58,7 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
     $scope.emotionResult = $routeParams.id;
     $scope.emotionResults = emotionsdata.get($scope.emotionResult);
 
+    $scope.latestEmotions = emotionsdata.latest($routeParams.id);
     // $scope.emotions = emotionsdata.all();
 
     $scope.averageEmotion = {};
@@ -140,7 +140,7 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
         var speedss = []
         var speedcount = 0;
         angular.forEach(countDuplicates(speeds)[0], function(speed) {
-            speedss.push([Number(speed), countDuplicates(speeds)[1][speedcount]]);
+            speedss.push([Number(-speed), countDuplicates(speeds)[1][speedcount]]);
             speedcount++;
         })
         console.log('speed', speedss[0])
@@ -178,12 +178,18 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                     "backgroundColor": 'transparent',
                     events: {
                         load: function() {
-                            this.renderer.image('img/hue.png', 10, 10, '95.5%', 176).add(); // add image(url, x, y, w, h) old value with y axis(40, 10, '89%', 376)
+                            this.renderer.image('img/hue.png', 10, 10, '95.5%', 126).add(); // add image(url, x, y, w, h) old value with y axis(40, 10, '89%', 376)
                         }
                     }
                 },
                 "tooltip": {
-                    "enabled": false
+                    formatter: function() {
+                        var personpeople = 'People';
+                        if(this.y == 1){
+                            personpeople = 'Person'
+                        };
+                        return '<b>' + this.y + '</b> ' + personpeople + ' chose <b>' + this.x + '</b>';
+                    }
                 },
                 "plotOptions": {
                     "series": {
@@ -192,7 +198,7 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                 }
             },
             "series": [{
-                "color": "#FFF",
+                "color": "#fff",
                 "showInLegend": false,
                 "data": $scope.colorColors,
                 "id": "series-0",
@@ -204,6 +210,7 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
             "xAxis": {
                 "min": 0,
                 "max": 360,
+                "gridLineColor": "transparent",
                 "title": {
                     "text": null
                 },
@@ -212,10 +219,11 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                 }
             },
             "yAxis": {
+                "gridLineColor": "transparent",
                 "title": {
                     "text": null
                 },
-                 "labels": {
+                "labels": {
                     "enabled": false
                 }
             },
@@ -239,7 +247,13 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                     "backgroundColor": 'transparent',
                 },
                 "tooltip": {
-                    "enabled": false
+                    formatter: function() {
+                        var personpeople = 'People';
+                        if(this.y == 1){
+                            personpeople = 'Person'
+                        };
+                        return '<b>' + this.y + '</b> ' + personpeople + ' chose <b>' + this.x + '% radius</b>';
+                    }
                 },
                 "plotOptions": {
                     "series": {
@@ -248,7 +262,7 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                 }
             },
             "series": [{
-                "color": "#333",
+                "color": "#999",
                 "showInLegend": false,
                 "data": $scope.radii,
                 "id": "series-0",
@@ -293,9 +307,15 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                     "type": "scatter",
                     "backgroundColor": 'transparent',
                 },
-                // "tooltip": {
-                //     "enabled": false
-                // },
+                "tooltip": {
+                    formatter: function() {
+                        var personpeople = 'People';
+                        if(this.y == 1){
+                            personpeople = 'Person'
+                        };
+                        return '<b>' + this.y + '</b> ' + personpeople + ' chose <b>' + this.x + 's</b>';
+                    }
+                },
                 "plotOptions": {
                     "series": {
                         "stacking": "normal"
@@ -303,7 +323,7 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                 }
             },
             "series": [{
-                "color": "#333",
+                "color": "#999",
                 "showInLegend": false,
                 "data": $scope.speeds,
                 "id": "series-0",
@@ -313,8 +333,9 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                 "text": ""
             },
             "xAxis": {
-                "min": -2,
-                "max": -.2,
+                "min": .2,
+                "max": 2,
+                "reversed": false,
                 "title": {
                     "text": null
                 },
@@ -364,7 +385,7 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
         return maxEl;
 
         //create color chart
-        
+
     }
     //returns array that removes duplicates -> a
     //returns array of the count of each in array a -> b

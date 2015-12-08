@@ -1,14 +1,27 @@
 .content {
     //transition: transform 1s;
     //perspective: 600px;
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    margin: 0 auto;
+    transition: margin .25s ease-in-out;
+    position: relative;
     .flip {
-        width: 100%;
-        max-width: 500px;
-        background: #fff;
-        margin: 0 auto;
         transform-style: preserve-3d;
-        backface-visibility: hidden;
-        transition: all 2s ease-in-out;
+        -webkit-transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        /* again */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #FFF;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+        margin: 40px 0;
+        overflow: visible;
+        transition: all 1s ease-in-out;
         &.ng-enter {
             transform: rotateY(-180deg);
         }
@@ -20,19 +33,11 @@
         }
         &.ng-leave-active {
             transform: rotateY(180deg);
-            z-index:3;
+            z-index: 3;
         }
         .wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: #FFF;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, .25);
-            margin: 40px 0;
-            overflow: hidden;
-            transition: margin .25s ease-in-out;
+            transform: rotateY(0deg);
+            backface-visibility: hidden;
             .padding {
                 padding: 30px;
                 &.no-bottom-padding {
@@ -42,25 +47,26 @@
             .slide-section {
                 position: relative;
                 transition: .3s ease-in-out height;
-                &.Q1{
-                    height:152px;
-                }
-                &.Q2{
+                overflow:hidden;
+                &.Q1 {
                     height: 152px;
                 }
-                &.Q3{
-                    height:400px;
+                &.Q2 {
+                    height: 152px;
+                }
+                &.Q3 {
+                    height: 400px;
                 }
                 .slide-content {
                     position: absolute;
-                    width:100%;
-                    left:0;
+                    width: 100%;
+                    left: 0;
                     transition: .5s ease-in-out all;
-                    &.right{
-                        left:100%;
+                    &.right {
+                        left: 100%;
                     }
-                    &.left{
-                        left:-100%;
+                    &.left {
+                        left: -100%;
                     }
                     &.ng-hide {
                         right: 100%;

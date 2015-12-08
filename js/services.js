@@ -11,8 +11,8 @@ angular.module('app.services', ['firebase'])
             all: function() {
                 return emotions;
             },
-            latestfour: function(emotion) {
-                return $firebase(emotionsRef.child(emotion).limit(4)).$asArray();
+            latest: function(emotion) {
+                return $firebase(emotionsRef.child(emotion).limit(3)).$asArray();
 
             },
             add: function(emotion) {

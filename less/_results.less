@@ -1,13 +1,62 @@
 .results {
+    text-align: center;
     &.animate-container {
         display: inline-block;
-        width: 120px;
-        margin: 10px;
+        width: 135px;
+        margin: 0 0 15px 15px;
         background: #EFEDED;
         border-radius: 9px;
+        &:first-child {
+            margin-left: 0;
+        }
     }
 }
 
+.center {
+    text-align: center;
+}
+
 .highchart-scatter {
-    height:200px;
+    height: 200px;
+}
+
+#color-chart {
+    height: 150px;
+}
+
+.results-drawer {
+    height: 250px;
+    overflow: hidden;
+    transition: all .25s ease-in-out;
+    border-bottom: 4px solid #fff;
+    &.color-chart {
+        height: 200px;
+    }
+    &.motion-chart {
+        height: 300px;
+    }
+    &.close {
+        height: 0;
+    }
+}
+
+header.drawer-header {
+    position: relative;
+    &:after {
+        content: '';
+        border: 10px solid #999;
+        border-bottom-color: transparent;
+        border-right: transparent 9px solid;
+        border-left: transparent 9px solid;
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        transform-origin: center 25%;
+        transition: .25s ease-in-out;
+    }
+    &.close {
+        &:after {
+            transform: rotate(90deg);
+        }
+    }
 }

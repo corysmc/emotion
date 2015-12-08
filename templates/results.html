@@ -4,10 +4,10 @@
         <div class="hr"></div>
     </div>
     <header>
-        <h2>Other responses for {{emotionResult}}</h2>
+        <h2>Recent responses for {{emotionResult}}</h2>
     </header>
-    <div class="padding">
-        <div class="animate-container results" ng-repeat="emotion in emotionResults | limitTo:4">
+    <div class="padding center">
+        <div class="animate-container results" ng-repeat="emotion in emotionResults | limitTo:3">
             <div class="animate-block" style="border-radius:{{emotion.radius}}%; animation: {{emotion.motion}} linear {{-emotion.speed}}s infinite; background-color: hsl({{emotion.hue}}, 100%, 43%)"></div>
         </div>
     </div>
@@ -15,39 +15,43 @@
         <h2>Average Results {{emotionResult}}</h2>
     </header>
     <div class="padding">
-        <div class="animate-container results">
+        <div class="animate-container">
             <div class="animate-block" style="border-radius:{{averageEmotion.radius}}%; animation: {{averageEmotion.motion}} linear {{-averageEmotion.speed}}s infinite; background-color: hsl({{averageEmotion.hue}}, 100%, 43%)"></div>
         </div>
     </div>
-    <header>
-        <h2>Average Hue: {{averageEmotion.hue}}</h2>
+    <header class="drawer-header" ng-click="showHue = !showHue" ng-class="{'close': !showHue}">
+        <h2>Average Hue: {{averageEmotion.hue.toFixed(0)}}</h2>
     </header>
-    <div class="padding">
-        <highchart id="color-chart" class="highchart-scatter" config="colorChartConfig"></highchart>
+    <div class="results-drawer color-chart" ng-class="{'close': !showHue}">
+        <div class="padding">
+            <highchart id="color-chart" class="highchart-scatter" config="colorChartConfig"></highchart>
+        </div>
     </div>
-    </canvas>
-    <header>
-        <h2>Average Radius: {{averageEmotion.radius}}</h2>
+    <header class="drawer-header" ng-click="showRadius = !showRadius" ng-class="{'close': !showRadius}">
+        <h2>Average Radius: {{averageEmotion.radius.toFixed(0)}}%</h2>
     </header>
-    <div class="padding">
-        <highchart id="radius-chart" class="highchart-scatter" config="radiusChartConfig"></highchart>
+    <div class="results-drawer" ng-class="{'close': !showRadius}">
+        <div class="padding">
+            <highchart id="radius-chart" class="highchart-scatter" config="radiusChartConfig"></highchart>
+        </div>
     </div>
-    </canvas>
-    <header>
-        <h2>Average Motion Speed: {{-averageEmotion.speed}}</h2>
+    <header class="drawer-header" ng-click="showSpeed = !showSpeed" ng-class="{'close': !showSpeed}">
+        <h2>Average Motion Speed: {{-averageEmotion.speed.toFixed(2)}} seconds</h2>
     </header>
-    <div class="padding">
-        <highchart id="radius-chart" class="highchart-scatter" config="speedChartConfig"></highchart>
+    <div class="results-drawer" ng-class="{'close': !showSpeed}">
+        <div class="padding">
+            <highchart id="radius-chart" class="highchart-scatter" config="speedChartConfig"></highchart>
+        </div>
     </div>
-    </canvas>
-    <header>
+    <header class="drawer-header" ng-click="showMotion = !showMotion" ng-class="{'close': !showMotion}">
         <h2>Average Motion: {{averageEmotion.motion}}</h2>
     </header>
-    <div class="padding">
-        <canvas id="doughnut" class="chart chart-doughnut" chart-data="motionData" chart-labels="motionLabels" chart-legend="true">
-        </canvas>
+    <div class="results-drawer motion-chart" ng-class="{'close': !showMotion}">
+        <div class="padding">
+            <canvas id="doughnut" class="chart chart-doughnut" chart-data="motionData" chart-labels="motionLabels" chart-legend="true">
+            </canvas>
+        </div>
     </div>
-    </canvas>
     <footer>
         <button class="submit" ng-click="restart();" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color: hsl({{emotion.hue}}, 100%, 43%); color:{{emotion.color.font}} ">
             Restart

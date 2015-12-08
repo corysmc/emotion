@@ -1,7 +1,6 @@
 <div class="wrapper">
     <div class="padding no-bottom-padding">
         <h1>{{emotion.name}}</h1>
-        <p>Use the controls to build the emotion: {{emotion.name}}.
     </div>
     <div class="animate-container">
         <div class="animate-block" ng-click="moveRight = !moveRight" style="border-radius:{{emotion.radius}}%; background-color:{{emotion.color.hex}}; animation: {{animation}} linear {{-emotion.speed}}s; background-color: hsl({{emotion.hue}}, 100%, 43%)"></div>
@@ -9,7 +8,7 @@
     <div class="slide-section Q{{Q}}">
         <div class="slide-content" ng-class="{'left': Q == 2 || Q == 3}">
             <header>
-                <h2>Slide to change Color</h2>
+                <h2>What is the color of {{emotion.name}}?</h2>
             </header>
             <div class="input-group colors padding">
                 <div class="range-wrap">
@@ -19,7 +18,7 @@
         </div>
         <div class="slide-content" ng-class="{'right': Q == 1, 'left': Q == 3}">
             <header>
-                <h2>Round Corners</h2>
+                <h2>What is the shape of {{emotion.name}}?</h2>
             </header>
             <div class="input-group corners padding">
                 <div class="range-wrap">
@@ -31,7 +30,7 @@
         </div>
         <div class="slide-content" ng-class="{'right': Q == 2 || Q == 1}">
             <header>
-                <h2>Motion</h2>
+                <h2>Which of these motions is {{emotion.name}}?</h2>
             </header>
             <div class="input-group motion padding">
                 <div class="range-wrap">

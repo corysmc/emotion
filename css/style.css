@@ -140,7 +140,7 @@ table {
 body {
   font-family: 'Raleway', sans-serif;
   color: #5a5a5a;
-  background: #f1f1f1;
+  background: #DDD !important;
 }
 a {
   text-decoration: none;
@@ -149,15 +149,60 @@ a {
 .hr {
   height: 50px;
 }
+.results {
+  text-align: center;
+}
 .results.animate-container {
   display: inline-block;
-  width: 120px;
-  margin: 10px;
+  width: 135px;
+  margin: 0 0 15px 15px;
   background: #EFEDED;
   border-radius: 9px;
 }
+.results.animate-container:first-child {
+  margin-left: 0;
+}
+.center {
+  text-align: center;
+}
 .highchart-scatter {
   height: 200px;
+}
+#color-chart {
+  height: 150px;
+}
+.results-drawer {
+  height: 250px;
+  overflow: hidden;
+  transition: all 0.25s ease-in-out;
+  border-bottom: 4px solid #fff;
+}
+.results-drawer.color-chart {
+  height: 200px;
+}
+.results-drawer.motion-chart {
+  height: 300px;
+}
+.results-drawer.close {
+  height: 0;
+}
+header.drawer-header {
+  position: relative;
+}
+header.drawer-header:after {
+  content: '';
+  border: 10px solid #999;
+  border-bottom-color: transparent;
+  border-right: transparent 9px solid;
+  border-left: transparent 9px solid;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  transform-origin: center 25%;
+  transition: 0.25s ease-in-out;
+}
+header.drawer-header.close:after {
+  transform: rotate(90deg);
 }
 h1 {
   font-size: 24px;
@@ -195,14 +240,29 @@ p.small-body {
   font-weight: 600;
   letter-spacing: .5px;
 }
-.content .flip {
+.content {
   width: 100%;
   max-width: 500px;
   background: #fff;
   margin: 0 auto;
+  transition: margin 0.25s ease-in-out;
+  position: relative;
+}
+.content .flip {
   transform-style: preserve-3d;
-  backface-visibility: hidden;
-  transition: all 2s ease-in-out;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  /* again */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #FFF;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+  margin: 40px 0;
+  overflow: visible;
+  transition: all 1s ease-in-out;
 }
 .content .flip.ng-enter {
   transform: rotateY(-180deg);
@@ -218,16 +278,8 @@ p.small-body {
   z-index: 3;
 }
 .content .flip .wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: #FFF;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
-  margin: 40px 0;
-  overflow: hidden;
-  transition: margin 0.25s ease-in-out;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
 }
 .content .flip .wrapper .padding {
   padding: 30px;
@@ -238,6 +290,7 @@ p.small-body {
 .content .flip .wrapper .slide-section {
   position: relative;
   transition: 0.3s ease-in-out height;
+  overflow: hidden;
 }
 .content .flip .wrapper .slide-section.Q1 {
   height: 152px;
@@ -581,7 +634,8 @@ p.small-body {
 }
 .input-group.motion ul li {
   display: inline-block;
-  background: #f1f1f1;
+  background: #999 !important;
+  color: #fff !important;
   width: 140px;
   border-radius: 3px;
   margin: 5px;
@@ -604,9 +658,10 @@ p.small-body {
 }
 button.submit {
   border: none;
-  background: #f1f1f1;
+  background: #999 !important;
+  border-radius: 4px !important;
+  color: #FFF !important;
   padding: 10px 20px;
-  border-radius: 2px;
   font-size: 14px;
   font-family: 'Raleway', sans-serif;
   cursor: pointer;
@@ -740,4 +795,76 @@ table tr td .result-preview {
   height: 30px;
   margin: 0 auto;
   line-height: 30px;
+}
+.lucid-drawer-wrapper .lucid-wrapper-overflow-hidden {
+  overflow: hidden;
+}
+.lucid-drawer-wrapper .lucid-show-more-drawer-button {
+  position: relative;
+  background-color: #66737f;
+  border-radius: 0 0 5px 5px;
+  text-align: center;
+  cursor: pointer;
+}
+.lucid-drawer-wrapper .lucid-show-more-drawer-button .lucid-drawer-center-text {
+  display: inline-block;
+  position: relative;
+  padding-right: 13px;
+}
+.lucid-drawer-wrapper .lucid-show-more-drawer-button .lucid-drawer-button-text {
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  height: 25px;
+  line-height: 25px;
+  font-weight: 100;
+}
+.lucid-drawer-wrapper .lucid-show-more-drawer-button .lucid-drawer-more-icon {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  transition: 0.25s ease-in-out all;
+  font-size: 0;
+}
+.lucid-drawer-wrapper .lucid-show-more-drawer-button .lucid-drawer-more-icon g {
+  fill: #fff;
+}
+.lucid-drawer-wrapper .lucid-show-more-drawer-button .lucid-drawer-more-icon.lucid-drawer-open {
+  transform: rotateZ(180deg);
+  transform-origin: center;
+}
+.lucid-drawer-wrapper .lucid-popover-menu-drawer {
+  padding: 10px;
+  background: #e5e5e5;
+  box-sizing: border-box;
+  opacity: 1;
+  margin-top: 0;
+  transition: 0.35s ease-in-out all;
+}
+.lucid-drawer-wrapper .lucid-popover-menu-drawer.lucid-drawer-open {
+  margin-top: 0px !important;
+}
+.lucid-drawer-wrapper .lucid-popover-menu-drawer.ng-hide {
+  opacity: 0;
+}
+.lucid-drawer-wrapper .lucid-popover-menu-drawer.ng-hide.top-handle-height {
+  height: 0 !important;
+  padding: 0;
+}
+.lucid-drawer-wrapper .lucid-popover-menu-drawer.ng-animate {
+  transition: 0.35s ease-in-out all;
+}
+.lucid-drawer-wrapper.top-handle .lucid-show-more-drawer-button {
+  border-radius: 0;
+}
+.lucid-drawer-wrapper.top-handle .lucid-show-more-drawer-button .lucid-drawer-more-icon {
+  transform: rotateZ(180deg);
+  transform-origin: center;
+}
+.lucid-drawer-wrapper.top-handle .lucid-show-more-drawer-button .lucid-drawer-more-icon.lucid-drawer-open {
+  transform: rotateZ(0deg);
+  transform-origin: center;
+}
+.hide-drawer-handle.lucid-drawer-wrapper .lucid-show-more-drawer-button {
+  display: none;
 }
