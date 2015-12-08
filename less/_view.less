@@ -1,25 +1,26 @@
 .content {
-    //-webkit-transition: -webkit-transform 1s;
-    //-webkit-perspective: 600px;
+    //transition: transform 1s;
+    //perspective: 600px;
     .flip {
         width: 100%;
         max-width: 500px;
         background: #fff;
         margin: 0 auto;
-        -webkit-transform-style: preserve-3d;
-        -webkit-backface-visibility: hidden;
-        -webkit-transition: all 1s ease-in-out;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        transition: all 2s ease-in-out;
         &.ng-enter {
-            -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
         }
         &.ng-enter-active {
-            -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
         }
         &.ng-leave {
-            -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
         }
         &.ng-leave-active {
-            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+            z-index:3;
         }
         .wrapper {
             position: absolute;

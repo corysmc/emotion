@@ -4,19 +4,23 @@ angular.module('app.services', ['firebase'])
     .factory('emotionsdata', function($firebase) {
         var firebaseUrl = 'https://glaring-heat-7055.firebaseio.com/';
         var ref = new Firebase(firebaseUrl);
-        var emotionsRef = ref.child('emotions');
+        var emotionsRef = ref.child('emotions2');
         var emotions = $firebase(emotionsRef).$asArray();
+
         return {
             all: function() {
                 return emotions;
             },
-            get: function(name) {
-                console.log(name);
-                return emotions.filter(function(obj) {
-                    if (obj.name === name) {
-                        return obj;
-                    }
-                })[0];
+            latestfour: function(emotion) {
+                return $firebase(emotionsRef.child(emotion).limit(4)).$asArray();
+
+            },
+            add: function(emotion) {
+                console.log('add', emotion)
+                emotionsRef.child(emotion.name).push(emotion);
+            },
+            get: function(emotion) {
+                return $firebase(emotionsRef.child(emotion)).$asArray();
             },
             update: function(emotion, currentData) {
 
@@ -90,62 +94,19 @@ angular.module('app.services', ['firebase'])
 
                 console.log(obj);
 
-                emotionsRef.update(obj)
+                emotionsRef.update(obj);
             },
         };
     })
     .factory('motions', function() {
-        var motions = [{
-            'name': 'bounce',
-            'animation': 'bounce',
-            'time': '800'
-        }, {
-            'name': 'wobble',
-            'animation': 'wobble',
-            'time': '3800'
-        }, {
-            'name': 'tada',
-            'animation': 'tada'
-        }, {
-            'name': 'rubberBand',
-            'animation': 'rubberBand'
-        }, {
-            'name': 'jello',
-             'animation': 'jello',
-         }
-        // , {
-        //     'name': 'ease-in',
-        //     'cubicbezier': '.42,0,1,1'
-        // }, {
-        //     'name': 'ease-out',
-        //     'cubicbezier': '0,0,.58,1'
-        // }, {
-        //     'name': 'ease-in-out',
-        //     'cubicbezier': '.42,0,.58,1'
-        // }, {
-        //     'name': 'snap',
-        //     'cubicbezier': '.4,.01,1,.5'
-        // }, {
-        //     'name': 'Bounce',
-        //     'cubicbezier': '.42,0,.58,1'
-        // }
-        ];
+        var motions = ['bounce', 'wobble', 'tada', 'rubberBand', 'jello'];
+
         return motions;
     })
     .factory('emotions', function() {
-        var emotions = ['interest', 'aniticipation', 'serenity', 'love', 'agressiveness', 'contempt', 'remorse'];
-        var emotion = {
-            "color": {
-                "name": "blue",
-                "hex": "#007CDC",
-                "font": "#FFF",
-            },
-            "radius": "0",
-            "motion": {
-                "name": "ease-out",
-                "cubicbezier": "0,0,.58,1"
-            }
-        };
+        var emotions = ['Joy', 'Aniticipation', 'Anger', 'Disgust', 'Sadness', 'Surprise', 'Fear', 'Trust'];
+
+
         return {
             all: function() {
                 return emotions;
@@ -156,6 +117,14 @@ angular.module('app.services', ['firebase'])
                 return random;
             },
             current: function() {
+                var emotion = {
+                    "name": this.random(),
+                    "hue": 180,
+                    "radius": 25,
+                    "speed": -1,
+                    "motion": "bounce",
+
+                };
                 return emotion;
             }
         };

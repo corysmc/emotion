@@ -2,29 +2,52 @@
     <div class="padding">
         <h1>Results</h1>
         <div class="hr"></div>
-        <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="false" chart-series="series" chart-click="onClick">
-        </canvas>
-        <table style="width:100%">
-            <tr class="header">
-                <th></th>
-                <th>Color</th>
-                <th>Radius</th>
-                <th>Motion</th>
-            </tr>
-            <tr ng-repeat="emotion in emotions" ng-class-even="'even'">
-                <td class="left-align">{{emotion.$id}}</td>
-                <td>
-                    <div class="result-preview" ng-repeat="color in emotion.colors | orderObjectBy:'count':'reverse' | limitTo:1" style="background-color: {{color.hex}}; border-radius: {{emotion.radius}}%;">{{color.count}}</div>
-                </td>
-                <td>
-                    <div class="result-preview" ng-repeat="radius in emotion.radius | orderObjectBy:'count':'reverse' | limitTo:1" style="background-color: {{color.hex}}; border-radius: {{emotion.radius}}%;">{{radius.count}}</div>
-                </td>
-                <td>
-                    <div class="result-preview" ng-repeat="motion in emotion.motions | orderObjectBy:'count':'reverse' | limitTo:1" style="background-color: {{color.hex}}; border-radius: {{emotion.radius}}%;">{{motion.count}}</div>
-                </td>
-            </tr>
-        </table>
     </div>
+    <header>
+        <h2>Other responses for {{emotionResult}}</h2>
+    </header>
+    <div class="padding">
+        <div class="animate-container results" ng-repeat="emotion in emotionResults | limitTo:4">
+            <div class="animate-block" style="border-radius:{{emotion.radius}}%; animation: {{emotion.motion}} linear {{-emotion.speed}}s infinite; background-color: hsl({{emotion.hue}}, 100%, 43%)"></div>
+        </div>
+    </div>
+    <header>
+        <h2>Average Results {{emotionResult}}</h2>
+    </header>
+    <div class="padding">
+        <div class="animate-container results">
+            <div class="animate-block" style="border-radius:{{averageEmotion.radius}}%; animation: {{averageEmotion.motion}} linear {{-averageEmotion.speed}}s infinite; background-color: hsl({{averageEmotion.hue}}, 100%, 43%)"></div>
+        </div>
+    </div>
+    <header>
+        <h2>Average Hue: {{averageEmotion.hue}}</h2>
+    </header>
+    <div class="padding">
+        <highchart id="color-chart" config="colorChartConfig"></highchart>
+    </div>
+    </canvas>
+    <header>
+        <h2>Average Radius: {{averageEmotion.radius}}</h2>
+    </header>
+    <div class="padding">
+        <highchart id="radius-chart" config="radiusChartConfig"></highchart>
+    </div>
+    </canvas>
+    <header>
+        <h2>Average Motion Speed: {{-averageEmotion.speed}}</h2>
+    </header>
+    <div class="padding">
+        <highchart id="radius-chart" config="speedChartConfig"></highchart>
+    </div>
+    </canvas>
+    <header>
+        <h2>Average Motion: {{averageEmotion.motion}}</h2>
+    </header>
+    <div class="padding">
+        <canvas id="doughnut" class="chart chart-doughnut" chart-data="motionData" chart-labels="motionLabels" chart-legend="true">
+        </canvas>
+    </div>
+    </canvas>
     <footer>
         <button class="submit" ng-click="restart();" style=" border-radius: {{(emotion.radius * 2 /100)*20}}px; background-color: hsl({{emotion.hue}}, 100%, 43%); color:{{emotion.color.font}} ">
             Restart
