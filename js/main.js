@@ -1,5 +1,5 @@
 /*global angular : true fixes codekit error*/
-var personalityApp = angular.module('personalityApp', ['ngRoute', 'ngAnimate', 'app.services', 'highcharts-ng', 'chart.js']);
+var personalityApp = angular.module('personalityApp', ['ngRoute', 'ngAnimate', 'app.services', 'highcharts-ng', 'chart.js', '720kb.socialshare']);
 
 personalityApp.config(function($routeProvider) {
     $routeProvider
@@ -58,17 +58,13 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
     $scope.emotionResult = $routeParams.id;
     $scope.emotionResults = emotionsdata.get($scope.emotionResult);
 
-    $scope.latestEmotions = emotionsdata.latest($routeParams.id);
-    // $scope.emotions = emotionsdata.all();
-
     $scope.averageEmotion = {};
-    $scope.emotionResults.$loaded().then(function(data) {
-        test();
+    $scope.emotionResults.$loaded().then(function() {
+        sliceData();
     });
 
 
-    var test = function() {
-        console.log('test');
+    var sliceData = function() {
         var hue = 0;
         var radius = 0;
         var speed = 0;
@@ -97,53 +93,38 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
         //which motion has the highest count
         $scope.averageEmotion.motion = mode(motions);
 
-
-        //console.log('motions', motions, 'total', hue, 'motion', mode(motions));
-
         //Data for motion pie Chart 
         $scope.motionLabels = countDuplicates(motions)[0];
         $scope.motionData = countDuplicates(motions)[1];
 
-
-        // //Data for Color Scatter Chart
-        // $scope.colorLabels = countDuplicates(hues)[0];
-        // $scope.colorData = countDuplicates(hues)[1];
-
-        // //Data for Radius Scatter Chart
-        // $scope.radiusLabels = countDuplicates(radii)[0];
-        // $scope.radiusData = countDuplicates(radii)[1];
-
-        // //Data for Radius Scatter Chart
-        // $scope.speedLabels = countDuplicates(speeds)[0];
-        // $scope.speedData = countDuplicates(speeds)[1];
-
+        //colors array for chart
         var colors = []
         var colorcount = 0;
         angular.forEach(countDuplicates(hues)[0], function(hue) {
             colors.push([Number(hue), countDuplicates(hues)[1][colorcount]]);
             colorcount++;
         })
-        console.log('colors', colors[0])
+        //console.log('colors', colors[0])
         $scope.colorColors = colors;
 
-
+        //radius array for chart
         var radiuss = []
         var radiuscount = 0;
         angular.forEach(countDuplicates(radii)[0], function(radius) {
             radiuss.push([Number(radius), countDuplicates(radii)[1][radiuscount]]);
             radiuscount++;
         })
-        console.log('radii', radiuss[0])
+        //console.log('radii', radiuss[0])
         $scope.radii = radiuss;
 
-
+        //speed array for chart
         var speedss = []
         var speedcount = 0;
         angular.forEach(countDuplicates(speeds)[0], function(speed) {
             speedss.push([Number(-speed), countDuplicates(speeds)[1][speedcount]]);
             speedcount++;
         })
-        console.log('speed', speedss[0])
+        //console.log('speed', speedss[0])
         $scope.speeds = speedss;
 
         function countInArray(array, what) {
@@ -155,21 +136,6 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
             }
             return count;
         };
-
-        //huesLineData = [];
-        // huesXaxis = [];
-        // for (var i = 0; i < 360; i++) {
-        //     var count = countInArray(hues, i);
-        //     console.log('count hue', count);
-        //     huesLineData.push(count);
-        //     huesXaxis.push(i);
-        // };
-        //start canvas
-        //$scope.colorLabels = huesXaxis;
-        //$scope.colorData = [huesLineData];
-
-        //buildColorChart();
-        //console.log('duplicates', countDuplicates(motions))
 
         $scope.colorChartConfig = {
             "options": {
@@ -277,17 +243,11 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                 "title": {
                     "text": null
                 },
-                // "labels": {
-                //     "enabled": false
-                // }
             },
             "yAxis": {
                 "title": {
                     "text": null
                 },
-                //  "labels": {
-                //     "enabled": false
-                // }
             },
             "credits": {
                 "enabled": false
@@ -339,17 +299,11 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                 "title": {
                     "text": null
                 },
-                // "labels": {
-                //     "enabled": false
-                // }
             },
             "yAxis": {
                 "title": {
                     "text": null
                 },
-                //  "labels": {
-                //     "enabled": false
-                // }
             },
             "credits": {
                 "enabled": false
@@ -408,45 +362,19 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
         return [a, b];
     }
 
-
-
-
-    $scope.onClick = function(points, evt) {
-        console.log(points, evt);
-    };
-    //end canvas
-
-
     $scope.restart = function() {
         $location.path('/');
     };
 });
 
+personalityApp.controller('socialShare', function($scope) {
+    $scope.social = {
+        url : 'http://corysmc.github.io/emotion/',
+        img :'http://corysmc.github.io/emotion/img/share.png',
+        text: 'Design an Emotion - Senior Project',
+        hastags: 'design, emotion, coding, web design'
 
-// personalityApp.filter('orderObjectBy', function() {
-//     return function(items, field, reverse) {
-//         var filtered = [];
-//         angular.forEach(items, function(item) {
-//             filtered.push(item);
-//         });
 
-//         function index(obj, i) {
-//             return obj[i];
-//         }
-//         filtered.sort(function(a, b) {
-//             var comparator;
-//             var reducedA = field.split('.').reduce(index, a);
-//             var reducedB = field.split('.').reduce(index, b);
-//             if (reducedA === reducedB) {
-//                 comparator = 0;
-//             } else {
-//                 comparator = (reducedA > reducedB ? 1 : -1);
-//             }
-//             return comparator;
-//         });
-//         if (reverse) {
-//             filtered.reverse();
-//         }
-//         return filtered;
-//     };
-// });
+    }
+
+});

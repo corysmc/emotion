@@ -1,18 +1,25 @@
 <div class="wrapper">
     <div class="padding">
-        <h1>Results</h1>
+        <h1>Results for {{emotionResult}}</h1>
         <div class="hr"></div>
+        <!-- Start Social -->
+
+        <div class="social-share-wrapper">
+            <div class="share-text">Please share this project!</div>
+            <ng-include src="'templates/social-share.html'">
+        </div>
+        <!-- End Social -->
     </div>
     <header>
-        <h2>Recent responses for {{emotionResult}}</h2>
+        <h2>Recent responses</h2>
     </header>
     <div class="padding center">
-        <div class="animate-container results" ng-repeat="emotion in emotionResults | limitTo:3">
+        <div class="animate-container results" ng-repeat="emotion in emotionResults | orderBy : timestamp :'reverse' | limitTo: 3">
             <div class="animate-block" style="border-radius:{{emotion.radius}}%; animation: {{emotion.motion}} linear {{-emotion.speed}}s infinite; background-color: hsl({{emotion.hue}}, 100%, 43%)"></div>
         </div>
     </div>
     <header>
-        <h2>Average Results {{emotionResult}}</h2>
+        <h2>Average Results For {{emotionResult}}</h2>
     </header>
     <div class="padding">
         <div class="animate-container">
@@ -36,7 +43,7 @@
         </div>
     </div>
     <header class="drawer-header" ng-click="showSpeed = !showSpeed" ng-class="{'close': !showSpeed}">
-        <h2>Average Motion Speed: {{-averageEmotion.speed.toFixed(2)}} seconds</h2>
+        <h2>Average Speed: {{-averageEmotion.speed.toFixed(2)}} seconds</h2>
     </header>
     <div class="results-drawer" ng-class="{'close': !showSpeed}">
         <div class="padding">
@@ -44,7 +51,7 @@
         </div>
     </div>
     <header class="drawer-header" ng-click="showMotion = !showMotion" ng-class="{'close': !showMotion}">
-        <h2>Average Motion: {{averageEmotion.motion}}</h2>
+        <h2>Most Common Motion: {{averageEmotion.motion}}</h2>
     </header>
     <div class="results-drawer motion-chart" ng-class="{'close': !showMotion}">
         <div class="padding">
