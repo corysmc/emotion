@@ -156,7 +156,7 @@ a {
   background: #EFEDED;
   border-radius: 9px;
 }
-#color-chart {
+.highchart-scatter {
   height: 200px;
 }
 h1 {

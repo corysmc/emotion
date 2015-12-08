@@ -178,7 +178,7 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                     "backgroundColor": 'transparent',
                     events: {
                         load: function() {
-                            this.renderer.image('../img/hue.png', 10, 10, '95.5%', 176).add(); // add image(url, x, y, w, h) old value with y axis(40, 10, '89%', 376)
+                            this.renderer.image('img/hue.png', 10, 10, '95.5%', 176).add(); // add image(url, x, y, w, h) old value with y axis(40, 10, '89%', 376)
                         }
                     }
                 },
