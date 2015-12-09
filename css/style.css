@@ -1081,3 +1081,78 @@ table tr td .result-preview {
   color: #999;
   padding: 5px;
 }
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  vertical-align: top;
+}
+.select-wrapper .selected-option-wrapper {
+  position: relative;
+}
+.select-wrapper .selected-option-wrapper:after {
+  content: '';
+  border: 9px solid #999;
+  border-bottom-color: transparent;
+  border-right: transparent 7px solid;
+  border-left: transparent 7px solid;
+  position: absolute;
+  top: 12px;
+  right: 0px;
+  -webkit-transform-origin: center 16px;
+      -ms-transform-origin: center 16px;
+          transform-origin: center 16px;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+.select-wrapper .selected-option-wrapper .selected-option {
+  text-align: left;
+  display: block;
+  cursor: pointer;
+  padding-right: 18px;
+}
+.select-wrapper .select-dropdown {
+  width: 150px;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  top: 40px;
+  left: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  background: #fff;
+  opacity: 1;
+}
+.select-wrapper .select-dropdown > div {
+  padding: 6px 0;
+  margin-top: 0;
+  -webkit-transition: 0.25s ease-in-out margin;
+  transition: 0.25s ease-in-out margin;
+}
+.select-wrapper .select-dropdown.ng-hide {
+  opacity: 0;
+}
+.select-wrapper .select-dropdown.ng-hide > div {
+  margin-top: -20px;
+}
+.select-wrapper .select-dropdown.ng-animate {
+  overflow: hidden;
+  -webkit-transition: 0.25s ease-in-out all;
+  transition: 0.25s ease-in-out all;
+}
+.select-wrapper .select-dropdown .select-option {
+  cursor: pointer;
+  padding: 5px 15px;
+  text-align: left;
+  -webkit-transition: 0.1s ease-in-out all;
+  transition: 0.1s ease-in-out all;
+}
+.select-wrapper .select-dropdown .select-option:hover {
+  background: #F5F5F5;
+}
+.select-wrapper .select-dropdown .select-option.active {
+  background: #999;
+  color: #fff;
+}
+.select-wrapper .select-dropdown .select-option.active:hover {
+  opacity: .9;
+}

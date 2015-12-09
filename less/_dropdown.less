@@ -1,0 +1,71 @@
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: top;
+    .selected-option-wrapper {
+        position: relative;
+         &:after {
+            content: '';
+            border: 9px solid #999;
+            border-bottom-color: transparent;
+            border-right: transparent 7px solid;
+            border-left: transparent 7px solid;
+            position: absolute;
+            top: 12px;
+            right: 0px;
+            transform-origin: center 16px;
+            transition: .25s ease-in-out;
+        }
+        .selected-option {
+            text-align: left;
+            display: block;
+            cursor: pointer;
+            //border-bottom: 1px solid @blue-steel-2;
+            padding-right: 18px
+        }
+    }
+    .select-dropdown {
+        width:150px;
+        display: inline-block;
+        position: absolute;
+        z-index: 1;
+        top: 40px;
+        left: 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+        background: #fff;
+        opacity: 1;
+        >div {
+            padding: 6px 0;
+            margin-top: 0;
+            transition: .25s ease-in-out margin;
+        }
+        &.ng-hide {
+            > div {
+                margin-top: -20px;
+            }
+            opacity: 0;
+        }
+        &.ng-animate {
+            overflow: hidden;
+            transition: .25s ease-in-out all;
+        }
+        .select-option {
+            cursor: pointer;
+            padding: 5px 15px;
+            text-align: left;
+            transition: .1s ease-in-out all;
+            &:hover {
+                background: #F5F5F5;
+            }
+            &.active {
+                background: #999;
+                color: #fff;
+                //font-weight: 200;
+                &:hover {
+                    opacity: .9;
+                }
+            }
+        }
+    }
+}

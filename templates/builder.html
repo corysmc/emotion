@@ -1,9 +1,25 @@
 <div class="wrapper">
     <div class="padding no-bottom-padding">
-        <h1>{{emotion.name}}</h1>
+        <h1 ng-hide="Q == 1">{{emotion.name}}</h1>
+        <!-- start dropdown -->
+        <div class="select-wrapper" ng-show="Q == 1">
+            <div class="selected-option-wrapper" ng-click="showdropdown = !showdropdown">
+                <span class="selected-option"><h1>{{emotion.name}}</h1></span>
+            </div>
+            <div class="select-dropdown" ng-show="showdropdown">
+                <div>
+                    <ul>
+                        <li class="select-option" ng-repeat="emotion in emotions" ng-click="$parent.emotion.name = emotion; $parent.showdropdown = false;" ng-class="{active: $parent.emotion.name == emotion}">
+                            {{emotion}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end dropdown -->
     </div>
     <div class="animate-container">
-        <div class="animate-block" ng-click="moveRight = !moveRight" style="border-radius:{{emotion.radius}}%; background-color:{{emotion.color.hex}}; animation: {{emotion.motion}} linear {{-emotion.speed}}s {{infinite}}; background-color: hsl({{emotion.hue}}, 100%, 47%)"></div>
+        <div class="animate-block" style="border-radius:{{emotion.radius}}%; background-color:{{emotion.color.hex}}; animation: {{emotion.motion}} linear {{-emotion.speed}}s {{infinite}}; background-color: hsl({{emotion.hue}}, 100%, 47%)"></div>
     </div>
     <div class="slide-section Q{{Q}}">
         <div class="slide-content" ng-class="{'left': Q == 2 || Q == 3}">
