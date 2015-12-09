@@ -30,7 +30,7 @@ angular.module('app.services', ['firebase'])
         return motions;
     })
     .factory('emotions', function() {
-        var emotions = ['Joy', 'Aniticipation', 'Anger', 'Disgust', 'Sadness', 'Surprise', 'Fear', 'Trust'];
+        var emotions = ['Joy', 'Anticipation', 'Anger', 'Disgust', 'Sadness', 'Surprise', 'Fear', 'Trust'];
 
 
         return {
