@@ -41,10 +41,18 @@ personalityApp.controller('mainController', function($scope, $location, $timeout
             //emotionsdata.update(emotion, emotionsdata.all());
             emotionsdata.add(emotion);
         } else {
+
             $scope.Q = (Q + 1);
         }
     };
-    //this function adds active class to sidebar items//
+    $scope.$watch('Q', function(newValue) {
+            if ($scope.Q === 3) {
+                $scope.infinite = "infinite";
+            } else {
+                $scope.infinite = "";
+            }
+        })
+        //this function adds active class to sidebar items//
     $scope.isActive = function(viewRoot, viewEnd) {
         var viewLocation = viewRoot + viewEnd;
         var active = (viewLocation === $location.url());
@@ -101,30 +109,30 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
         var colors = []
         var colorcount = 0;
         angular.forEach(countDuplicates(hues)[0], function(hue) {
-            colors.push([Number(hue), countDuplicates(hues)[1][colorcount]]);
-            colorcount++;
-        })
-        //console.log('colors', colors[0])
+                colors.push([Number(hue), countDuplicates(hues)[1][colorcount]]);
+                colorcount++;
+            })
+            //console.log('colors', colors[0])
         $scope.colorColors = colors;
 
         //radius array for chart
         var radiuss = []
         var radiuscount = 0;
         angular.forEach(countDuplicates(radii)[0], function(radius) {
-            radiuss.push([Number(radius), countDuplicates(radii)[1][radiuscount]]);
-            radiuscount++;
-        })
-        //console.log('radii', radiuss[0])
+                radiuss.push([Number(radius), countDuplicates(radii)[1][radiuscount]]);
+                radiuscount++;
+            })
+            //console.log('radii', radiuss[0])
         $scope.radii = radiuss;
 
         //speed array for chart
         var speedss = []
         var speedcount = 0;
         angular.forEach(countDuplicates(speeds)[0], function(speed) {
-            speedss.push([Number(-speed), countDuplicates(speeds)[1][speedcount]]);
-            speedcount++;
-        })
-        //console.log('speed', speedss[0])
+                speedss.push([Number(-speed), countDuplicates(speeds)[1][speedcount]]);
+                speedcount++;
+            })
+            //console.log('speed', speedss[0])
         $scope.speeds = speedss;
 
         function countInArray(array, what) {
@@ -151,7 +159,7 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                 "tooltip": {
                     formatter: function() {
                         var personpeople = 'People';
-                        if(this.y == 1){
+                        if (this.y == 1) {
                             personpeople = 'Person'
                         };
                         return '<b>' + this.y + '</b> ' + personpeople + ' chose <b>' + this.x + '</b>';
@@ -215,7 +223,7 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                 "tooltip": {
                     formatter: function() {
                         var personpeople = 'People';
-                        if(this.y == 1){
+                        if (this.y == 1) {
                             personpeople = 'Person'
                         };
                         return '<b>' + this.y + '</b> ' + personpeople + ' chose <b>' + this.x + '% radius</b>';
@@ -270,7 +278,7 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
                 "tooltip": {
                     formatter: function() {
                         var personpeople = 'People';
-                        if(this.y == 1){
+                        if (this.y == 1) {
                             personpeople = 'Person'
                         };
                         return '<b>' + this.y + '</b> ' + personpeople + ' chose <b>' + this.x + 's</b>';
@@ -369,8 +377,8 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
 
 personalityApp.controller('socialShare', function($scope) {
     $scope.social = {
-        url : 'http://corysmc.github.io/emotion/',
-        img :'http://corysmc.github.io/emotion/img/social-share.png',
+        url: 'http://corysmc.github.io/emotion/',
+        img: 'http://corysmc.github.io/emotion/img/social-share.png',
         text: 'Design an emotion, see the results, and compare your design to others.',
         hastags: 'design, emotion, coding, web design'
 
