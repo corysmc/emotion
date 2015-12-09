@@ -27,11 +27,11 @@ personalityApp.controller('mainController', function($scope, $location, $timeout
     $scope.emotion = emotions.current();
     $scope.changeMotion = function(motion) {
         //console.log('motion', motion);
-        $scope.emotion.motion = null;
+        //$scope.emotion.motion = null;
 
-        $timeout(function() {
+        // $timeout(function() {
             $scope.emotion.motion = motion;
-        }, 10);
+        // }, 10);
     };
     $scope.submitEmotion = function(Q, emotion) {
         if (Q === 3) {
