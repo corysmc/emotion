@@ -71,6 +71,9 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
         sliceData();
     });
 
+    $scope.changeResults = function(emotion){
+        $location.path('/results/'+emotion);
+    };
 
     var sliceData = function() {
         var hue = 0;

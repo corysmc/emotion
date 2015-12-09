@@ -182,6 +182,10 @@ a {
 #color-chart .highcharts-markers path {
   stroke: #999;
 }
+.response-count {
+  padding: 10px 20px;
+  text-align: center;
+}
 .results-drawer {
   height: 250px;
   overflow: hidden;
