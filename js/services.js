@@ -25,7 +25,7 @@ angular.module('app.services', ['firebase'])
         };
     })
     .factory('motions', function() {
-        var motions = ['Bounce', 'Wobble', 'Tada', 'RubberBand', 'Jello'];
+        var motions = ['Bounce', 'Wobble', 'Tada', 'RubberBand', 'Jello', 'Swing'];
 
         return motions;
     })

@@ -371,7 +371,7 @@ personalityApp.controller('socialShare', function($scope) {
     $scope.social = {
         url : 'http://corysmc.github.io/emotion/',
         img :'http://corysmc.github.io/emotion/img/social-share.png',
-        text: 'Design an Emotion - Senior Project',
+        text: 'Design an emotion, see the results, and compare your design to others.',
         hastags: 'design, emotion, coding, web design'
 
 

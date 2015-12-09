@@ -44,38 +44,26 @@
 
 ////////////////////// WOBBLE /////////////////////////
 @keyframes Wobble {
-    0% {
-        transform: translate(0px, 0px);
+    from {
+        transform: none;
     }
-    10% {
-        transform: translate(-10px, 0px);
-    }
-    20% {
-        transform: translate(10px, 0px);
+    15% {
+        transform: translate3d(-35%, 0, 0) rotate3d(0, 0, 1, -10deg);
     }
     30% {
-        transform: translate(-10px, 0px);
+        transform: translate3d(30%, 0, 0) rotate3d(0, 0, 1, 6deg);
     }
-    40% {
-        transform: translate(10px, 0px);
-    }
-    50% {
-        transform: translate(-10px, 0px);
+    45% {
+        transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -6deg);
     }
     60% {
-        transform: translate(10px, 0px);
+        transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 4deg);
     }
-    70% {
-        transform: translate(-10px, 0px);
+    75% {
+        transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -2deg);
     }
-    80% {
-        transform: translate(10px, 0px);
-    }
-    90% {
-        transform: translate(-10px, 0px);
-    }
-    100% {
-        transform: translate(0px, 0px);
+    to {
+        transform: none;
     }
 }
 
@@ -186,5 +174,24 @@
     }
     88.8% {
         transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+    }
+}
+
+/////////////// SWING ////////////////
+@keyframes Swing {
+    20% {
+        transform: rotate3d(0, 0, 1, 15deg);
+    }
+    40% {
+        transform: rotate3d(0, 0, 1, -10deg);
+    }
+    60% {
+        transform: rotate3d(0, 0, 1, 5deg);
+    }
+    80% {
+        transform: rotate3d(0, 0, 1, -5deg);
+    }
+    to {
+        transform: rotate3d(0, 0, 1, 0deg);
     }
 }
