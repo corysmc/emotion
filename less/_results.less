@@ -8,12 +8,22 @@
         background: #EFEDED;
         border-radius: 9px;
         padding: 1px;
-        &:first-child {
+        &:nth-child(3n +1) {
             margin-left: 0;
         }
         @media screen and (max-width: 500px) {
-            margin: 15px auto !important;
-            display: block;
+            &:nth-child(3n +1) {
+                margin-left: 15px;
+            }
+            &:nth-child(2n +1) {
+                margin-left: 0;
+            }
+        }
+        @media screen and (max-width: 345px) {
+            margin: 15px;
+            &:nth-child(3n +1), &:nth-child(2n +1) {
+                margin: 15px;
+            }
         }
     }
 }
@@ -34,10 +44,18 @@
         }
     }
 }
-.response-count{
+
+.response-count {
     padding: 10px 20px;
     text-align: center;
+    .show-all {
+        cursor: pointer;
+        color: #333;
+        font-weight: 600;
+        text-decoration: underline;
+    }
 }
+
 .results-drawer {
     height: 250px;
     overflow: hidden;

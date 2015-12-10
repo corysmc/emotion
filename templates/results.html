@@ -28,12 +28,12 @@
     <header>
         <h2>Recent responses</h2>
     </header>
-    <div class="padding center">
-        <div class="animate-container results" ng-repeat="emotion in emotionResults | orderBy : timestamp :'reverse' | limitTo: 3">
+    <div class="padding center" ng-init="limit = 3">
+        <div class="animate-container results" ng-repeat="emotion in emotionResults | orderBy : timestamp :'reverse' | limitTo: limit">
             <div class="animate-block" style="border-radius:{{emotion.radius}}%; animation: {{emotion.motion}} linear {{-emotion.speed}}s infinite; background-color: hsl({{emotion.hue}}, 100%, 43%)"></div>
         </div>
     </div>
-    <div class="response-count">Showing latest 3 / {{emotionResults.length}} Responses for {{emotionResult}}</div>
+    <div class="response-count">Showing latest 3 / {{emotionResults.length}} Responses. <span ng-click="showAllResults(emotionResult)" class="show-all">Show All</span></div>
     <header>
         <h2>Average Results For {{emotionResult}}</h2>
     </header>
