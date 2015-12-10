@@ -22,7 +22,7 @@ personalityApp.config(function($routeProvider) {
 
 personalityApp.controller('mainController', function($scope, $location, $timeout, motions, emotions, emotionsdata) {
     $scope.motions = motions;
-    $scope.Q = 3;
+    $scope.Q = 1;
     $scope.emotions = emotions.all();
     $scope.emotion = emotions.current();
     $scope.animation = emotions.current().motion;
