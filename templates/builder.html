@@ -51,7 +51,7 @@
             <div class="input-group motion padding">
                 <div class="range-wrap">
                     <div ng-include="'img/turtle.svg'" class="speed-icon-left"></div>
-                    <input type="range" min="-2" max="-0.2" step=".05" ng-model="emotion.speed" ng-change="changeMotion(emotion.motion)">
+                    <input type="range" min="-2" max="-0.2" step=".05" ng-model="emotion.speed" ng-change="changeMotion(emotion.motion)" ng-click="changeMotion(emotion.motion)">
                     <div ng-include="'img/rabbit.svg'" class="speed-icon-right"></div>
                 </div>
             </div>
