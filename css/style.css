@@ -1094,6 +1094,21 @@ table tr td .result-preview {
 .select-wrapper .selected-option-wrapper {
   position: relative;
 }
+.select-wrapper .selected-option-wrapper:after {
+  content: '';
+  border: 8px solid #999;
+  border-bottom-color: transparent;
+  border-right: transparent 6px solid;
+  border-left: transparent 6px solid;
+  position: absolute;
+  top: 12px;
+  right: 0px;
+  -webkit-transform-origin: center 16px;
+      -ms-transform-origin: center 16px;
+          transform-origin: center 16px;
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
 .select-wrapper .selected-option-wrapper .selected-option {
   text-align: left;
   display: block;

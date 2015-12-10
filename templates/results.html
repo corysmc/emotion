@@ -59,7 +59,7 @@
         </div>
     </div>
     <header class="drawer-header" ng-click="showSpeed = !showSpeed" ng-class="{'close': !showSpeed}">
-        <h2>Average Speed: {{-averageEmotion.speed.toFixed(2)}} seconds</h2>
+        <h2>Average Speed: {{-averageEmotion.speed.toFixed(2)}} second<span ng-hide="-averageEmotion.speed.toFixed(2) == '1'">s</span></h2>
     </header>
     <div class="results-drawer" ng-class="{'close': !showSpeed}">
         <div class="padding">
