@@ -22,10 +22,10 @@ personalityApp.config(function($routeProvider) {
 
 personalityApp.controller('mainController', function($scope, $location, $timeout, motions, emotions, emotionsdata) {
     $scope.motions = motions;
-    $scope.Q = 1;
+    $scope.Q = 3;
     $scope.emotions = emotions.all();
     $scope.emotion = emotions.current();
-
+    $scope.animation = emotions.current().motion;
     //find lowest entry
     $scope.allEmotions = emotionsdata.all();
 
@@ -58,12 +58,12 @@ personalityApp.controller('mainController', function($scope, $location, $timeout
     });
 
     $scope.changeMotion = function(motion) {
-        //console.log('motion', motion);
-        //$scope.emotion.motion = null;
+        console.log('motion', motion);
+        $scope.animation = null;
 
-        // $timeout(function() {
-        $scope.emotion.motion = motion;
-        // }, 10);
+        $timeout(function() {
+        $scope.animation = motion;
+        }, 10);
     };
     $scope.submitEmotion = function(Q, emotion) {
         if (Q === 3) {
