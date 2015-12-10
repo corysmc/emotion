@@ -25,12 +25,44 @@ personalityApp.controller('mainController', function($scope, $location, $timeout
     $scope.Q = 1;
     $scope.emotions = emotions.all();
     $scope.emotion = emotions.current();
+
+    //find lowest entry
+    $scope.allEmotions = emotionsdata.all();
+
+    $scope.allEmotions.$loaded().then(function() {
+        var emotiongroupmin = 1000000;
+
+        function ObjectLength(object) {
+            var length = 0;
+            for (var key in object) {
+                if (object.hasOwnProperty(key)) {
+                    ++length;
+                }
+            }
+            return length;
+        }
+        
+        angular.forEach($scope.allEmotions, function(emotiongroup) {
+            //console.log(ObjectLength(emotiongroup));
+
+            if (ObjectLength(emotiongroup) < emotiongroupmin) {
+                emotiongroupmin = ObjectLength(emotiongroup);
+                //console.log('new min', emotiongroup.$id, ObjectLength(emotiongroup));
+                lowestEmotionCount = emotiongroup.$id;
+            }
+
+        });
+        //console.log('lowest', lowestEmotionCount)
+        $scope.emotion.name = lowestEmotionCount;
+
+    });
+
     $scope.changeMotion = function(motion) {
         //console.log('motion', motion);
         //$scope.emotion.motion = null;
 
         // $timeout(function() {
-            $scope.emotion.motion = motion;
+        $scope.emotion.motion = motion;
         // }, 10);
     };
     $scope.submitEmotion = function(Q, emotion) {
@@ -59,7 +91,7 @@ personalityApp.controller('mainController', function($scope, $location, $timeout
         return active;
 
     };
-    //this pulls in the component groups for the sidebar//
+    //this finds the lowest count of data.
 });
 personalityApp.controller('resultsController', function($scope, $location, emotionsdata, $routeParams) {
     //gets emotion name from URL
@@ -67,12 +99,13 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
     $scope.emotionResults = emotionsdata.get($scope.emotionResult);
 
     $scope.averageEmotion = {};
+
     $scope.emotionResults.$loaded().then(function() {
         sliceData();
     });
 
-    $scope.changeResults = function(emotion){
-        $location.path('/results/'+emotion);
+    $scope.changeResults = function(emotion) {
+        $location.path('/results/' + emotion);
     };
 
     var sliceData = function() {
@@ -98,9 +131,26 @@ personalityApp.controller('resultsController', function($scope, $location, emoti
             //console.log(hueCount, hue, emotion.hue);
         });
         $scope.averageEmotion.radius = (radius / emotionCount)
-        $scope.averageEmotion.hue = (hue / emotionCount);
+        $scope.averageEmotion.hue = (hue / emotionCount); //averageAngles(hues);
         $scope.averageEmotion.speed = (speed / emotionCount);
+        console.log($scope.averageEmotion.hue);
 
+        //convert to polar cartesian coordinates to average correctly
+        function averageAngles(hues) {
+            var x = 0;
+            var y = 0;
+            angular.forEach(hues, function(hue) {
+                x += Math.cos(hue);
+                y += Math.sin(hue);
+            });
+            var aveX = x / hues.length;
+            var aveY = y / hues.length;
+            //console.log('x', aveX, 'y', aveY)
+
+            var radians = Math.atan(aveY / aveX);
+            var degrees = radians * (180 / Math.PI);
+            return degrees;
+        };
         //which motion has the highest count
         $scope.averageEmotion.motion = mode(motions);
 
