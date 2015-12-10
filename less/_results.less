@@ -11,19 +11,23 @@
         &:nth-child(3n +1) {
             margin-left: 0;
         }
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 492px) {
             &:nth-child(3n +1) {
                 margin-left: 15px;
             }
             &:nth-child(2n +1) {
                 margin-left: 0;
+                margin-right:10px;
             }
         }
-        @media screen and (max-width: 345px) {
+        @media screen and (max-width: 355px) {
             margin: 15px;
             &:nth-child(3n +1), &:nth-child(2n +1) {
                 margin: 15px;
             }
+        }
+        &.active{
+            background: #999;
         }
     }
 }

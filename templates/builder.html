@@ -49,18 +49,16 @@
                 <h2>Which of these motions is {{emotion.name}}?</h2>
             </header>
             <div class="input-group motion padding">
+                <!-- START -->
+                <div class="animate-container results" ng-repeat="motion in motions" ng-click="$parent.emotion.motion = motion; $parent.animation = motion" ng-class="{'active':$parent.emotion.motion == motion}">
+                    <div class="animate-block" style="border-radius:{{emotion.radius}}%; animation: {{motion}} linear {{-$parent.emotion.speed}}s infinite; background-color: hsl({{emotion.hue}}, 100%, 47%); animation-delay: 2.5s;"></div>
+                </div>
+                <!-- END -->
                 <div class="range-wrap">
                     <div ng-include="'img/turtle.svg'" class="speed-icon-left"></div>
                     <input type="range" min="-2" max="-0.2" step=".05" ng-model="emotion.speed" ng-change="changeMotion(emotion.motion)">
                     <div ng-include="'img/rabbit.svg'" class="speed-icon-right"></div>
                 </div>
-            </div>
-            <div class="input-group motion padding">
-                <ul>
-                    <li class="motion" ng-repeat="motion in motions" ng-click="$parent.emotion.motion = motion; $parent.animation = motion" ng-class="{'inactive':$parent.emotion.motion !== motion}">
-                        {{motion}}
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
