@@ -26,7 +26,7 @@
         <!-- End Social -->
     </div>
     <header>
-        <h2>Recent responses</h2>
+        <h2>{{emotionResults.length}} responses</h2>
     </header>
     <div class="padding center">
         <div class="animate-container results" ng-repeat="emotion in emotionResults | orderBy : timestamp :'reverse'">
